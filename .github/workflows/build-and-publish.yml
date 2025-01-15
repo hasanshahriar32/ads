@@ -3,8 +3,9 @@ name: Build and Publish Notebooks
 on:
   push:
     branches:
-      - production  # Replace with your default branch
-      - '*.ipynb'
+      - production  # Default branch
+    paths:
+      - 'work/**/*.ipynb'  # Watch only files in the "work" folder
 
 jobs:
   build-and-publish:
@@ -19,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  # or another version
+          python-version: '3.9'  # Adjust as needed
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -31,13 +32,14 @@ jobs:
       - name: Convert Notebooks to HTML
         run: |
           mkdir -p docs
-          for notebook in $(find . -name "*.ipynb"); do
-            jupyter nbconvert --to html "$notebook" --output-dir docs
+          for notebook in $(find ./work -name "*.ipynb"); do
+            jupyter nbconvert --execute --to html "$notebook" --output-dir docs
           done
 
-      # Step 5: Publish to GitHub Pages
+      # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
+          publish_branch: gh-pages
