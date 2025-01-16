@@ -28,18 +28,27 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Convert Notebooks to HTML
-      - name: Convert Notebooks to HTML
+        # Step 4: Prepare Output Directory and Copy Data
+      - name: Prepare Output Directory and Copy Data
         run: |
           mkdir -p docs
-          # cp -r ./data work  # Copy the data directory to work
-          echo "Contents of work folder:"
+          cp -r ./data ./work  # Copy the data directory to work for notebook references
+          echo "Contents of work folder before conversion:"
           ls -R work
-          for notebook in $(find ./work -name "*.ipynb"); do
-            jupyter nbconvert --execute --to html "$notebook" --output-dir docs
-          done
 
-      # Step 5: Deploy to GitHub Pages
+      # Step 5: Convert Notebooks and Preserve Folder Structure
+      - name: Convert Notebooks and Preserve Folder Structure
+        run: |
+          for notebook in $(find ./work -name "*.ipynb"); do
+            relative_dir=$(dirname "$notebook" | sed 's|^./work/||')
+            output_dir="docs/$relative_dir"
+            mkdir -p "$output_dir"
+            jupyter nbconvert --execute --to html "$notebook" --output-dir "$output_dir"
+          done
+          echo "Contents of docs folder after conversion:"
+          ls -R docs
+
+      # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
