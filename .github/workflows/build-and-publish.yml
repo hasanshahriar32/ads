@@ -48,7 +48,7 @@ jobs:
                       <h1 class='text-4xl font-semibold text-center mb-4'>Index of Notebooks</h1>
                       <ul class='space-y-4'>" > docs/index.html
 
-          # Function to close open details
+          # Function to close open <details> tags based on depth
           close_open_details() {
             while [ $current_depth -gt $1 ]; do
               echo "</ul></details>" >> docs/index.html
