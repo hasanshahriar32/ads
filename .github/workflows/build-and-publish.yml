@@ -84,51 +84,33 @@ jobs:
           # Close the Index page HTML
           echo "</div></body></html>" >> docs/index.html
 
+          # Generate the Notebooks' Pages with a "Back to Index" link
+          for notebook in $(find ./ -name "*.ipynb"); do
+            relative_dir=$(dirname "$notebook" | sed 's|^./work/||')  # Extract the relative path within 'work'
+            output_dir="docs/$relative_dir"
+            notebook_name=$(basename "$notebook" .ipynb)
+            
+            # Create the HTML file for each notebook
+            echo "<html lang='en'>
+                    <head>
+                      <meta charset='UTF-8'>
+                      <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                      <title>$notebook_name</title>
+                      <script src='https://cdn.tailwindcss.com'></script>
+                    </head>
+                    <body class='bg-gray-100 p-8'>
+                      <div class='container mx-auto'>
+                        <a href='../index.html' class='text-blue-600 text-xl font-medium mb-8 block'>← Back to Index</a>" > "$output_dir/$notebook_name.html"
+            
+            # Add the notebook's content (the converted HTML)
+            cat "$output_dir/$notebook_name.html" >> "$output_dir/$notebook_name.html"
+            
+            # Close the HTML structure
+            echo "</div></body></html>" >> "$output_dir/$notebook_name.html"
+          done
+
           echo "Contents of docs folder after conversion:"
           ls -R docs
-
-          # Generate navigation for each notebook page
-          for notebook in $(find ./work -name "*.ipynb"); do
-            relative_dir=$(dirname "$notebook" | sed 's|^./work/||')  # Extract the relative path within 'work'
-            notebook_name=$(basename "$notebook" .ipynb)
-            output_dir="docs/$relative_dir"
-            
-            # Create previous and next navigation links
-            all_notebooks=($(find "$relative_dir" -name "*.html" | sort))  # List all notebooks in the same directory and sort
-
-            if [ ${#all_notebooks[@]} -gt 0 ]; then  # Check if the array has elements
-              index=$(echo "${all_notebooks[@]}" | grep -n "$relative_dir/$notebook_name.html" | cut -d ':' -f 1)
-              
-              # Ensure index is valid before accessing the array
-              if [ -n "$index" ]; then
-                prev_notebook=${all_notebooks[$((index-1))]}
-                next_notebook=${all_notebooks[$((index+1))]}
-
-                # Add navigation to the current notebook page
-                echo "<html lang='en'>
-                        <head>
-                          <meta charset='UTF-8'>
-                          <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                          <title>$notebook_name</title>
-                          <script src='https://cdn.tailwindcss.com'></script>
-                        </head>
-                        <body class='bg-gray-100 p-8'>
-                          <div class='container mx-auto'>
-                            <h1 class='text-4xl font-semibold text-center mb-8'>$notebook_name</h1>
-                            <div class='flex justify-between'>
-                              <a href='/docs/index.html' class='text-blue-600 hover:text-blue-800'>Back to Home</a>
-                              <div>
-                                $(if [[ -n "$prev_notebook" ]]; then echo "<a href='/docs/$prev_notebook' class='text-blue-600 hover:text-blue-800'>Previous</a>"; fi)
-                                $(if [[ -n "$next_notebook" ]]; then echo "<a href='/docs/$next_notebook' class='text-blue-600 hover:text-blue-800 ml-4'>Next</a>"; fi)
-                              </div>
-                            </div>
-                            <iframe src='/docs/$relative_dir/$notebook_name.html' class='w-full h-screen' frameborder='0'></iframe>
-                          </div>
-                        </body>
-                      </html>" > "$output_dir/$notebook_name.html"
-              fi
-            fi
-          done
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
