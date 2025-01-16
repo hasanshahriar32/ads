@@ -33,14 +33,11 @@ jobs:
         run: |
           mkdir -p docs
           cp -r ./data docs/data  # Copy the data directory to docs
+          echo "Contents of docs folder:"
+          ls -R docs
           for notebook in $(find ./work -name "*.ipynb"); do
             jupyter nbconvert --execute --to html "$notebook" --output-dir docs
           done
-
-      - name: Log docs folder contents
-        run: |
-          echo "Contents of docs folder:"
-          ls -R docs
 
       # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
