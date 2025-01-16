@@ -45,56 +45,66 @@ jobs:
                   </head>
                   <body class='bg-gray-100 p-8'>
                     <div class='container mx-auto'>
-                      <h1 class='text-4xl font-semibold text-center mb-2'>Index of Notebooks</h1>
-                      <a href='/README.md' class='text-md text-center mb-8 block'>README</a>
+                      <h1 class='text-4xl font-semibold text-center mb-4'>Index of Notebooks</h1>
                       <ul class='space-y-4'>" > docs/index.html
 
-          # Process notebooks and organize them by parent directory
-          for notebook in $(find ./ -name "*.ipynb"); do
-            relative_dir=$(dirname "$notebook" | sed 's|^./||')  # Extract the relative path
+          # Function to close nested details
+          close_nested_details() {
+            local depth=$1
+            while [ $current_depth -ge $depth ]; do
+              echo "</ul></details>" >> docs/index.html
+              current_depth=$((current_depth - 1))
+            done
+          }
+
+          # Initialize variables
+          current_depth=0
+          prev_path=""
+
+          # Process each notebook
+          for notebook in $(find ./ -name "*.ipynb" | sort); do
+            relative_dir=$(dirname "$notebook" | sed 's|^./||')  # Extract relative path
             output_dir="docs/$relative_dir"
             mkdir -p "$output_dir"
             
-            # Convert the notebook to HTML
+            # Convert notebook to HTML
             jupyter nbconvert --execute --to html "$notebook" --output-dir "$output_dir"
             
-            # Copy all contents of the notebook's parent directory to the corresponding output directory
+            # Copy contents of the parent directory
             parent_dir=$(dirname "$notebook")
-            cp -r "$parent_dir/"* "$output_dir/"
+            cp -r "$parent_dir/"* "$output_dir/" || true
 
-            # Build the navigation structure
+            # Build navigation structure
             IFS="/" read -ra DIR_PARTS <<< "$relative_dir"
-            nav_path=""
             for (( i=0; i<${#DIR_PARTS[@]}; i++ )); do
-              nav_path="$nav_path/${DIR_PARTS[i]}"
-              # Open a new details tag for each directory level if not already opened
-              if ! grep -q "<summary>${DIR_PARTS[i]}</summary>" docs/index.html; then
+              if [ $i -ge $current_depth ] || [ "${DIR_PARTS[i]}" != "$(echo $prev_path | cut -d/ -f$((i + 1)))" ]; then
+                close_nested_details $i
                 echo "<details class='bg-white rounded-lg shadow-md'>
-                        <summary class='cursor-pointer p-4 text-xl font-medium bg-gray-200 hover:bg-gray-300 rounded-t-lg'>
+                        <summary class='p-4 text-xl font-medium bg-gray-200 hover:bg-gray-300 rounded-t-lg'>
                           ${DIR_PARTS[i]}
                         </summary>
                         <ul class='pl-6 space-y-2'>" >> docs/index.html
+                current_depth=$((current_depth + 1))
               fi
             done
 
-            # Add the notebook link within the appropriate directory
+            # Add notebook link
             notebook_name=$(basename "$notebook" .ipynb)
             echo "<li>
                     <a href=\"$relative_dir/$notebook_name.html\" class='p-2 text-lg text-blue-600 hover:text-blue-800'>$notebook_name</a>
                   </li>" >> docs/index.html
+
+            prev_path=$relative_dir
           done
 
-          # Close all open tags for directories
-          grep -o "<details" docs/index.html | while read -r _; do
-            echo "</ul></details>" >> docs/index.html
-          done
+          # Close all remaining open tags
+          close_nested_details 0
 
-          # Close the Index page HTML
+          # Close the index page HTML
           echo "</ul></div></body></html>" >> docs/index.html
 
           echo "Contents of docs folder after conversion:"
           ls -R docs
-
 
      # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
