@@ -3,7 +3,7 @@ name: Build and Publish Notebooks
 on:
   push:
     branches:
-      - production  # Default branch
+      - main  # Default branch
 
 jobs:
   build-and-publish:
@@ -64,7 +64,7 @@ jobs:
             notebook_name=$(basename "$notebook" .ipynb)
             echo "<a href=\"$relative_dir/$notebook_name.html\" class='p-2 text-xl font-medium text-blue-600 hover:text-blue-800'>
                     <li class='bg-white rounded-lg shadow-md hover:bg-blue-50'>
-                      $notebook_name
+                      <p class='p-2'>$notebook_name</p>
                     </li>
                   </a>" >> docs/index.html
           done
