@@ -28,7 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-        # Step 4: Prepare Output Directory and Copy Data
+      # Step 4: Prepare Output Directory and Copy Data
       - name: Prepare Output Directory and Copy Data
         run: |
           mkdir -p docs
@@ -39,7 +39,8 @@ jobs:
       # Step 5: Convert Notebooks and Preserve Folder Structure
       - name: Convert Notebooks and Preserve Folder Structure
         run: |
-          # Step 5: Convert Notebooks and Preserve Folder Structure
+          echo "<html><body><h1>Index of Notebooks</h1><ul>" > docs/index.html  # Create the Index page
+
           for notebook in $(find ./ -name "*.ipynb"); do
             relative_dir=$(dirname "$notebook" | sed 's|^./work/||')  # Extract the relative path within 'work'
             output_dir="docs/$relative_dir"
@@ -51,11 +52,17 @@ jobs:
             # Copy all contents of the notebook's parent directory to the corresponding output directory
             parent_dir=$(dirname "$notebook")
             cp -r "$parent_dir/"* "$output_dir/"
+
+            # Add a link to the index page
+            notebook_name=$(basename "$notebook" .ipynb)
+            echo "<li><a href=\"$relative_dir/$notebook_name.html\">$notebook_name</a></li>" >> docs/index.html
           done
+
+          # Close the Index page HTML
+          echo "</ul></body></html>" >> docs/index.html
 
           echo "Contents of docs folder after conversion:"
           ls -R docs
-
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
