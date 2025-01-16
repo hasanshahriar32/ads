@@ -68,6 +68,19 @@ jobs:
             
             # Convert notebook to HTML
             jupyter nbconvert --execute --to html "$notebook" --output-dir "$output_dir"
+
+            # Add a back button to the top of the converted HTML file
+            notebook_name=$(basename "$notebook" .ipynb)
+            html_file="$output_dir/$notebook_name.html"
+
+            # Prepend the back button to the HTML file
+            sed -i "1i \
+            <div style='margin: 20px;'>\
+              <a href='/index.html' style='font-size: 16px; color: blue; text-decoration: underline;'>\
+                ← Back to Index\
+              </a>\
+            </div>" "$html_file"
+
             
             # Copy contents of the parent directory
             parent_dir=$(dirname "$notebook")
