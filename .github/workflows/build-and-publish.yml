@@ -46,26 +46,12 @@ jobs:
                   <body class='bg-gray-100 p-8'>
                     <div class='container mx-auto'>
                       <h1 class='text-4xl font-semibold text-center mb-2'>Index of Notebooks</h1>
-                      <a href='/README.md' class='text-md text-center mb-8'>README</a>
+                      <a href='/README.md' class='text-md text-center mb-8 block'>README</a>
                       <ul class='space-y-4'>" > docs/index.html
 
-          # Function to generate a dropdown menu for parent directories
-          create_dropdown() {
-            local parent=$1
-            echo "<details class='bg-white rounded-lg shadow-md'>
-                    <summary class='cursor-pointer p-4 text-xl font-medium bg-gray-200 hover:bg-gray-300 rounded-t-lg'>$parent</summary>
-                    <ul class='pl-6 space-y-2'>" >> docs/index.html
-          }
-
-          # Close a dropdown menu
-          close_dropdown() {
-            echo "</ul></details>" >> docs/index.html
-          }
-
-          # current_parent=""
+          # Process notebooks and organize them by parent directory
           for notebook in $(find ./ -name "*.ipynb"); do
-            relative_path=$(dirname "$notebook" | sed 's|^./||')  # Extract relative directory path
-            relative_dir=$(dirname "$relative_path")  # Get the directory of the notebook
+            relative_dir=$(dirname "$notebook" | sed 's|^./||')  # Extract the relative path
             output_dir="docs/$relative_dir"
             mkdir -p "$output_dir"
             
@@ -76,35 +62,39 @@ jobs:
             parent_dir=$(dirname "$notebook")
             cp -r "$parent_dir/"* "$output_dir/"
 
-            # Group by parent directory and create dropdown
-            parent_name=$(basename "$relative_dir")  # Parent directory name
-            if [ "$current_parent" != "$parent_name" ]; then
-              # Close the previous dropdown if exists
-              if [ -n "$current_parent" ]; then
-                close_dropdown
+            # Build the navigation structure
+            IFS="/" read -ra DIR_PARTS <<< "$relative_dir"
+            nav_path=""
+            for (( i=0; i<${#DIR_PARTS[@]}; i++ )); do
+              nav_path="$nav_path/${DIR_PARTS[i]}"
+              # Open a new details tag for each directory level if not already opened
+              if ! grep -q "<summary>${DIR_PARTS[i]}</summary>" docs/index.html; then
+                echo "<details class='bg-white rounded-lg shadow-md'>
+                        <summary class='cursor-pointer p-4 text-xl font-medium bg-gray-200 hover:bg-gray-300 rounded-t-lg'>
+                          ${DIR_PARTS[i]}
+                        </summary>
+                        <ul class='pl-6 space-y-2'>" >> docs/index.html
               fi
-              # Open a new dropdown for the new parent
-              create_dropdown "$parent_name"
-              current_parent="$parent_name"
-            fi
+            done
 
-            # Add a styled link to the notebook within the dropdown
+            # Add the notebook link within the appropriate directory
             notebook_name=$(basename "$notebook" .ipynb)
             echo "<li>
                     <a href=\"$relative_dir/$notebook_name.html\" class='p-2 text-lg text-blue-600 hover:text-blue-800'>$notebook_name</a>
                   </li>" >> docs/index.html
           done
 
-          # Close the last dropdown
-          if [ -n "$current_parent" ]; then
-            close_dropdown
-          fi
+          # Close all open tags for directories
+          grep -o "<details" docs/index.html | while read -r _; do
+            echo "</ul></details>" >> docs/index.html
+          done
 
           # Close the Index page HTML
           echo "</ul></div></body></html>" >> docs/index.html
 
           echo "Contents of docs folder after conversion:"
           ls -R docs
+
 
      # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
