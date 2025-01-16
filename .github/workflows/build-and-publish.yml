@@ -39,19 +39,23 @@ jobs:
       # Step 5: Convert Notebooks and Preserve Folder Structure
       - name: Convert Notebooks and Preserve Folder Structure
         run: |
+          # Step 5: Convert Notebooks and Preserve Folder Structure
           for notebook in $(find ./ -name "*.ipynb"); do
-            relative_dir=$(dirname "$notebook" | sed 's|^./work/||')
+            relative_dir=$(dirname "$notebook" | sed 's|^./work/||')  # Extract the relative path within 'work'
             output_dir="docs/$relative_dir"
             mkdir -p "$output_dir"
+            
+            # Convert the notebook to HTML
             jupyter nbconvert --execute --to html "$notebook" --output-dir "$output_dir"
-            # Copy corresponding data folders to the output directory
-            input_data_dir="$(dirname "$notebook")"
-            if [ -d "$input_data_dir" ]; then
-              cp -r "$input_data_dir" "$output_dir/"
-            fi
+            
+            # Copy all contents of the notebook's parent directory to the corresponding output directory
+            parent_dir=$(dirname "$notebook")
+            cp -r "$parent_dir/"* "$output_dir/"
           done
+
           echo "Contents of docs folder after conversion:"
           ls -R docs
+
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
