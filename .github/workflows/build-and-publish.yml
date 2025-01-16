@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - production  # Default branch
-    paths:
-      - 'work/**/*.ipynb'  # Watch only files in the "work" folder
+    # paths:
+      # - 'work/**/*.ipynb'  # Watch only files in the "work" folder
 
 jobs:
   build-and-publish:
@@ -44,6 +44,11 @@ jobs:
             output_dir="docs/$relative_dir"
             mkdir -p "$output_dir"
             jupyter nbconvert --execute --to html "$notebook" --output-dir "$output_dir"
+            # Copy corresponding data folders to the output directory
+            input_data_dir="$(dirname "$notebook")/data"
+            if [ -d "$input_data_dir" ]; then
+              cp -r "$input_data_dir" "$output_dir/"
+            fi
           done
           echo "Contents of docs folder after conversion:"
           ls -R docs
