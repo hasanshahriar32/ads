@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - production  # Default branch
+    # paths:
+      # - 'work/**/*.ipynb'  # Watch only files in the "work" folder
 
 jobs:
   build-and-publish:
@@ -83,31 +85,6 @@ jobs:
 
           # Close the Index page HTML
           echo "</div></body></html>" >> docs/index.html
-
-          # Generate the Notebooks' Pages with a "Back to Index" link
-          for notebook in $(find ./ -name "*.ipynb"); do
-            relative_dir=$(dirname "$notebook" | sed 's|^./work/||')  # Extract the relative path within 'work'
-            output_dir="docs/$relative_dir"
-            notebook_name=$(basename "$notebook" .ipynb)
-            
-            # Create the HTML file for each notebook
-            echo "<html lang='en'>
-                    <head>
-                      <meta charset='UTF-8'>
-                      <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                      <title>$notebook_name</title>
-                      <script src='https://cdn.tailwindcss.com'></script>
-                    </head>
-                    <body class='bg-gray-100 p-8'>
-                      <div class='container mx-auto'>
-                        <a href='../index.html' class='text-blue-600 text-xl font-medium mb-8 block'>← Back to Index</a>" > "$output_dir/$notebook_name.html"
-            
-            # Add the notebook's content (the converted HTML)
-            cat "$output_dir/$notebook_name.html" >> "$output_dir/$notebook_name.html"
-            
-            # Close the HTML structure
-            echo "</div></body></html>" >> "$output_dir/$notebook_name.html"
-          done
 
           echo "Contents of docs folder after conversion:"
           ls -R docs
