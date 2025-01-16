@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - production  # Default branch
-    # paths:
-      # - 'work/**/*.ipynb'  # Watch only files in the "work" folder
 
 jobs:
   build-and-publish:
@@ -52,32 +50,78 @@ jobs:
                       <h1 class='text-4xl font-semibold text-center mb-8'>Index of Notebooks</h1>
                       <ul class='space-y-4'>" > docs/index.html
 
-          for notebook in $(find ./ -name "*.ipynb"); do
-            relative_dir=$(dirname "$notebook" | sed 's|^./work/||')  # Extract the relative path within 'work'
-            output_dir="docs/$relative_dir"
-            mkdir -p "$output_dir"
-            
-            # Convert the notebook to HTML
-            jupyter nbconvert --execute --to html "$notebook" --output-dir "$output_dir"
-            
-            # Copy all contents of the notebook's parent directory to the corresponding output directory
-            parent_dir=$(dirname "$notebook")
-            cp -r "$parent_dir/"* "$output_dir/"
+          # Recursive function to generate the folder structure with links
+          generate_nav() {
+            local directory=$1
+            local depth=$2
+            local indent=$(printf '%*s' $((depth * 4)))  # Calculate indentation for folder levels
 
-            # Add a styled link to the index page with TailwindCSS
-            notebook_name=$(basename "$notebook" .ipynb)
-            echo "<a href=\"$relative_dir/$notebook_name.html\" class='text-xl font-medium text-blue-600 hover:text-blue-800'>
-                    <li class='p-4 bg-white rounded-lg shadow-md hover:bg-blue-50'>
-                      $notebook_name
-                    </li>
-                  </a>" >> docs/index.html
-          done
+            echo "$indent<ul class='space-y-2'>" >> docs/index.html
+
+            for file in "$directory"/*; do
+              if [ -d "$file" ]; then
+                # Directory: create a folder link
+                folder_name=$(basename "$file")
+                echo "$indent    <li class='font-bold text-lg'>$folder_name</li>" >> docs/index.html
+                # Recursively list the contents of the subdirectory
+                generate_nav "$file" $((depth + 1))
+              elif [[ "$file" == *.ipynb ]]; then
+                # Notebook: create a link to the notebook
+                notebook_name=$(basename "$file" .ipynb)
+                relative_path=$(realpath --relative-to=./ "$file")
+                echo "$indent    <li class='p-4 bg-white rounded-lg shadow-md hover:bg-blue-50'>
+                        <a href=\"$relative_path\" class='text-xl font-medium text-blue-600 hover:text-blue-800'>$notebook_name</a>
+                      </li>" >> docs/index.html
+              fi
+            done
+
+            echo "$indent</ul>" >> docs/index.html
+          }
+
+          # Start the folder structure generation from the "work" directory
+          generate_nav "./work" 0
 
           # Close the Index page HTML
-          echo "</ul></div></body></html>" >> docs/index.html
+          echo "</div></body></html>" >> docs/index.html
 
           echo "Contents of docs folder after conversion:"
           ls -R docs
+
+          # Generate navigation for each notebook page
+          for notebook in $(find ./work -name "*.ipynb"); do
+            relative_dir=$(dirname "$notebook" | sed 's|^./work/||')  # Extract the relative path within 'work'
+            notebook_name=$(basename "$notebook" .ipynb)
+            output_dir="docs/$relative_dir"
+            
+            # Create previous and next navigation links
+            all_notebooks=($(find "$relative_dir" -name "*.html" | sort))  # List all notebooks in the same directory and sort
+            index=$(echo "${all_notebooks[@]}" | grep -n "$relative_dir/$notebook_name.html" | cut -d ':' -f 1)
+            prev_notebook=${all_notebooks[$((index-1))]}
+            next_notebook=${all_notebooks[$((index+1))]}
+
+            # Add navigation to the current notebook page
+            echo "<html lang='en'>
+                    <head>
+                      <meta charset='UTF-8'>
+                      <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                      <title>$notebook_name</title>
+                      <script src='https://cdn.tailwindcss.com'></script>
+                    </head>
+                    <body class='bg-gray-100 p-8'>
+                      <div class='container mx-auto'>
+                        <h1 class='text-4xl font-semibold text-center mb-8'>$notebook_name</h1>
+                        <div class='flex justify-between'>
+                          <a href='/docs/index.html' class='text-blue-600 hover:text-blue-800'>Back to Home</a>
+                          <div>
+                            $(if [[ -n "$prev_notebook" ]]; then echo "<a href='/docs/$prev_notebook' class='text-blue-600 hover:text-blue-800'>Previous</a>"; fi)
+                            $(if [[ -n "$next_notebook" ]]; then echo "<a href='/docs/$next_notebook' class='text-blue-600 hover:text-blue-800 ml-4'>Next</a>"; fi)
+                          </div>
+                        </div>
+                        <iframe src='/docs/$relative_dir/$notebook_name.html' class='w-full h-screen' frameborder='0'></iframe>
+                      </div>
+                    </body>
+                  </html>" > "$output_dir/$notebook_name.html"
+          done
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
