@@ -40,12 +40,12 @@ jobs:
       - name: Convert Notebooks and Preserve Folder Structure
         run: |
           for notebook in $(find ./work -name "*.ipynb"); do
-            relative_dir=$(dirname "$notebook" | sed 's|^./work/||')
+            relative_dir=$(dirname "$notebook" | sed 's|^./||')
             output_dir="docs/$relative_dir"
             mkdir -p "$output_dir"
             jupyter nbconvert --execute --to html "$notebook" --output-dir "$output_dir"
             # Copy corresponding data folders to the output directory
-            input_data_dir="$(dirname)"
+            input_data_dir="$(dirname "$notebook")"
             if [ -d "$input_data_dir" ]; then
               cp -r "$input_data_dir" "$output_dir/"
             fi
