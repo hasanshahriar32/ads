@@ -48,10 +48,9 @@ jobs:
                       <h1 class='text-4xl font-semibold text-center mb-4'>Index of Notebooks</h1>
                       <ul class='space-y-4'>" > docs/index.html
 
-          # Function to close nested details
-          close_nested_details() {
-            local depth=$1
-            while [ $current_depth -ge $depth ]; do
+          # Function to close open details
+          close_open_details() {
+            while [ $current_depth -gt $1 ]; do
               echo "</ul></details>" >> docs/index.html
               current_depth=$((current_depth - 1))
             done
@@ -59,7 +58,7 @@ jobs:
 
           # Initialize variables
           current_depth=0
-          prev_path=""
+          prev_dir=""
 
           # Process each notebook
           for notebook in $(find ./ -name "*.ipynb" | sort); do
@@ -77,8 +76,8 @@ jobs:
             # Build navigation structure
             IFS="/" read -ra DIR_PARTS <<< "$relative_dir"
             for (( i=0; i<${#DIR_PARTS[@]}; i++ )); do
-              if [ $i -ge $current_depth ] || [ "${DIR_PARTS[i]}" != "$(echo $prev_path | cut -d/ -f$((i + 1)))" ]; then
-                close_nested_details $i
+              if [ $i -ge $current_depth ] || [ "${DIR_PARTS[i]}" != "$(echo $prev_dir | cut -d/ -f$((i + 1)))" ]; then
+                close_open_details $i
                 echo "<details class='bg-white rounded-lg shadow-md'>
                         <summary class='p-4 text-xl font-medium bg-gray-200 hover:bg-gray-300 rounded-t-lg'>
                           ${DIR_PARTS[i]}
@@ -94,17 +93,18 @@ jobs:
                     <a href=\"$relative_dir/$notebook_name.html\" class='p-2 text-lg text-blue-600 hover:text-blue-800'>$notebook_name</a>
                   </li>" >> docs/index.html
 
-            prev_path=$relative_dir
+            prev_dir=$relative_dir
           done
 
           # Close all remaining open tags
-          close_nested_details 0
+          close_open_details 0
 
           # Close the index page HTML
           echo "</ul></div></body></html>" >> docs/index.html
 
           echo "Contents of docs folder after conversion:"
           ls -R docs
+
 
      # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
