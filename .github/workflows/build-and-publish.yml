@@ -32,7 +32,7 @@ jobs:
       - name: Convert Notebooks to HTML
         run: |
           mkdir -p docs
-          cp -r ./data work  # Copy the data directory to work
+          # cp -r ./data work  # Copy the data directory to work
           echo "Contents of work folder:"
           ls -R work
           for notebook in $(find ./work -name "*.ipynb"); do
