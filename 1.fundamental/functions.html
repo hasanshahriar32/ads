@@ -7644,6 +7644,205 @@ round(number, ndigits=None)
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Most list methods will change the list they're called on. Examples are:</p>
+<ul>
+<li>.append(), that adds an element to the list it is called on,</li>
+<li>.remove(), that removes the first element of a list that matches the input, and</li>
+<li>.reverse(), that reverses the order of the elements in the list it is called on.</li>
+</ul>
+<p>You'll be working on the list with the area of different parts of the house: areas.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create list areas</span>
+<span class="n">areas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.25</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">10.75</span><span class="p">,</span> <span class="mf">9.50</span><span class="p">]</span>
+
+<span class="c1"># Use append twice to add poolhouse and garage size</span>
+
+<span class="n">areas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">24.5</span><span class="p">)</span>
+<span class="n">areas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">15.45</span><span class="p">)</span>
+
+
+<span class="c1"># Print out areas</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">areas</span><span class="p">)</span>
+
+<span class="c1"># Reverse the orders of the elements in areas</span>
+
+<span class="n">areas</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+
+<span class="c1"># Print out areas</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">areas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[11.25, 18.0, 20.0, 10.75, 9.5, 24.5, 15.45]
+[15.45, 24.5, 9.5, 10.75, 20.0, 18.0, 11.25]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="{128DC4C3-A59B-4457-8B84-D19B8DC928E2}.png" src="./%7B128DC4C3-A59B-4457-8B84-D19B8DC928E2%7D.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="{EA27B2C0-FF47-41A7-9A1B-77CCC9807F0A}.png" src="./%7BEA27B2C0-FF47-41A7-9A1B-77CCC9807F0A%7D.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Import-package">Import package<a class="anchor-link" href="#Import-package">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import the math package</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Calculate C</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">0.43</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+<span class="c1"># Calculate A</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">0.43</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Circumference: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Area: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Circumference: 2.701769682087222
+Area: 0.5808804816487527
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Selective-import">Selective import<a class="anchor-link" href="#Selective-import">¶</a></h3><p>General imports, like import math, make all functionality from the math package available to you. However, if you decide to only use a specific part of a package, you can always make your import more selective:</p>
+<p>from math import pi
+Try the same thing again, but this time only use pi.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import pi function of math package</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
+
+<span class="c1"># Calculate C</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">0.43</span> <span class="o">*</span> <span class="n">pi</span>
+
+<span class="c1"># Calculate A</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="mf">0.43</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Circumference: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Area: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Circumference: 2.701769682087222
+Area: 0.5808804816487527
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Different-ways-of-importing">Different ways of importing<a class="anchor-link" href="#Different-ways-of-importing">¶</a></h3><p>There are several ways to import packages and modules into Python. Depending on the import call, you'll have to use different Python code.</p>
+<p>Suppose you want to use the function inv(), which is in the linalg subpackage of the scipy package. You want to be able to use this function as follows:</p>
+<p>my_inv([[1,2], [3,4]])</p>
+<p>from scipy.linalg import inv as my_inv</p>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
