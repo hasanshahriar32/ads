@@ -62,7 +62,7 @@ jobs:
             echo "</ul></details>" >> docs/index.html
           }
 
-          current_parent=""
+          # current_parent=""
           for notebook in $(find ./ -name "*.ipynb"); do
             relative_path=$(dirname "$notebook" | sed 's|^./||')  # Extract relative directory path
             relative_dir=$(dirname "$relative_path")  # Get the directory of the notebook
