@@ -46,11 +46,26 @@ jobs:
                   <body class='bg-gray-100 p-8'>
                     <div class='container mx-auto'>
                       <h1 class='text-4xl font-semibold text-center mb-2'>Index of Notebooks</h1>
-                      <a href="/README.md" class='text-md text-center mb-8'>INDEX V.2.0</a>
+                      <a href='/README.md' class='text-md text-center mb-8'>README</a>
                       <ul class='space-y-4'>" > docs/index.html
 
+          # Function to generate a dropdown menu for parent directories
+          create_dropdown() {
+            local parent=$1
+            echo "<details class='bg-white rounded-lg shadow-md'>
+                    <summary class='cursor-pointer p-4 text-xl font-medium bg-gray-200 hover:bg-gray-300 rounded-t-lg'>$parent</summary>
+                    <ul class='pl-6 space-y-2'>" >> docs/index.html
+          }
+
+          # Close a dropdown menu
+          close_dropdown() {
+            echo "</ul></details>" >> docs/index.html
+          }
+
+          current_parent=""
           for notebook in $(find ./ -name "*.ipynb"); do
-            relative_dir=$(dirname "$notebook" | sed 's|^./||')  # Extract the relative path within 'work'
+            relative_path=$(dirname "$notebook" | sed 's|^./||')  # Extract relative directory path
+            relative_dir=$(dirname "$relative_path")  # Get the directory of the notebook
             output_dir="docs/$relative_dir"
             mkdir -p "$output_dir"
             
@@ -61,20 +76,36 @@ jobs:
             parent_dir=$(dirname "$notebook")
             cp -r "$parent_dir/"* "$output_dir/"
 
-            # Add a styled link to the index page with TailwindCSS
+            # Group by parent directory and create dropdown
+            parent_name=$(basename "$relative_dir")  # Parent directory name
+            if [ "$current_parent" != "$parent_name" ]; then
+              # Close the previous dropdown if exists
+              if [ -n "$current_parent" ]; then
+                close_dropdown
+              fi
+              # Open a new dropdown for the new parent
+              create_dropdown "$parent_name"
+              current_parent="$parent_name"
+            fi
+
+            # Add a styled link to the notebook within the dropdown
             notebook_name=$(basename "$notebook" .ipynb)
-            echo "<a href=\"$relative_dir/$notebook_name.html\" class='p-2 text-xl font-medium text-blue-600 hover:text-blue-800'>
-                    <li class='bg-white rounded-lg shadow-md hover:bg-blue-50'>
-                      <p class='p-2'>$notebook_name</p>
-                    </li>
-                  </a>" >> docs/index.html
+            echo "<li>
+                    <a href=\"$relative_dir/$notebook_name.html\" class='p-2 text-lg text-blue-600 hover:text-blue-800'>$notebook_name</a>
+                  </li>" >> docs/index.html
           done
+
+          # Close the last dropdown
+          if [ -n "$current_parent" ]; then
+            close_dropdown
+          fi
 
           # Close the Index page HTML
           echo "</ul></div></body></html>" >> docs/index.html
 
           echo "Contents of docs folder after conversion:"
           ls -R docs
+
      # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
