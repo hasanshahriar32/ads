@@ -32,7 +32,7 @@ jobs:
       - name: Convert Notebooks to HTML
         run: |
           mkdir -p docs
-          cp -r ./data docs  # Copy the data directory to docs
+          cp -r ./data docs/data  # Copy the data directory to docs
           for notebook in $(find ./work -name "*.ipynb"); do
             jupyter nbconvert --execute --to html "$notebook" --output-dir docs
           done
