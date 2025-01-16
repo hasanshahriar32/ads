@@ -76,7 +76,7 @@ jobs:
             # Prepend the back button to the HTML file
             sed -i "1i \
             <div style='margin: 20px;'>\
-              <a href='/index.html' style='font-size: 16px; color: blue; text-decoration: underline;'>\
+              <a href='/ads' style='font-size: 16px; color: blue; text-decoration: underline;'>\
                 ← Back to Index\
               </a>\
             </div>" "$html_file"
