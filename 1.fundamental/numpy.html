@@ -7761,6 +7761,17 @@ The numpy package is already imported as np.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2D-numpy-arrays">2D numpy arrays<a class="anchor-link" href="#2D-numpy-arrays">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><img alt="{BF76306E-763E-4132-9A5C-1F8E6CF8381C}.png" src="./%7BBF76306E-763E-4132-9A5C-1F8E6CF8381C%7D.png"/></p>
 </div>
 </div>
@@ -7775,6 +7786,1056 @@ The numpy package is already imported as np.</p>
 <p>here shape is attribute of ndarray, not a method</p>
 <p>here, the 2D array is a list of lists
 if one element is string, all elements will be string</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="image.png" src="./image.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Suppose you want to select the height and weight of the second and third family member. You want both rows, so you put in a colon before the comma. You only want the second and third column, so you put in the indices 1 to 3 after the comma.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="image.png" src="./image%20copy.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>you can select the weight of all family members like this: you only want the second row, so put 1 before the comma. You want all columns, so you use a colon after the comma.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="image.png" src="./image%20copy%202.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Before working on the actual MLB data, let's try to create a 2D numpy array from a small list of lists.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># example</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">baseball</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">180</span><span class="p">,</span> <span class="mf">78.4</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">215</span><span class="p">,</span> <span class="mf">102.7</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">210</span><span class="p">,</span> <span class="mf">98.5</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">188</span><span class="p">,</span> <span class="mf">75.2</span><span class="p">]]</span>
+
+<span class="c1"># Create a 2D numpy array from baseball: np_baseball</span>
+<span class="n">np_baseball</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">baseball</span><span class="p">)</span>
+
+<span class="c1"># Print out the type of np_baseball</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">np_baseball</span><span class="p">))</span>
+
+<span class="c1"># Print out the shape of np_baseball</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np_baseball</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>&lt;class 'numpy.ndarray'&gt;
+(4, 2)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Baseball-data-in-2D-form">Baseball data in 2D form<a class="anchor-link" href="#Baseball-data-in-2D-form">¶</a></h3><p>You realize that it makes more sense to restructure all this information in a 2D numpy array.</p>
+<p>You have a Python list of lists. In this list of lists, each sublist represents the height and weight of a single baseball player. The name of this list is baseball and it has been loaded for you already (although you can't see it).</p>
+<p>Store the data as a 2D array to unlock numpy's extra functionality.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="c1"># Create a 2D numpy array from baseball: np_baseball</span>
+<span class="n">np_baseball</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">baseball</span><span class="p">)</span>
+
+<span class="c1"># Print out the shape of np_baseball</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np_baseball</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>(4, 2)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Subsetting-2D-NumPy-Arrays">Subsetting 2D NumPy Arrays<a class="anchor-link" href="#Subsetting-2D-NumPy-Arrays">¶</a></h3><p>If your 2D numpy array has a regular structure, i.e. each row and column has a fixed number of values, complicated ways of subsetting become very easy. Have a look at the code below where the elements "a" and "c" are extracted from a list of lists.</p>
+<p>import numpy as np
+np_x = np.array(x)
+np_x[:, 0]</p>
+<p>The indexes before the comma refer to the rows, while those after the comma refer to the columns. The : is for slicing; in this example, it tells Python to include all rows.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1">## baseball of 50 players</span>
+<span class="n">baseball</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">215</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">176</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">209</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">231</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">160</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">189</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">219</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">79</span><span class="p">,</span> <span class="mi">230</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">230</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">192</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">225</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">203</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">182</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">245</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">240</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">215</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">175</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">199</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">215</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">206</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">186</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">212</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">224</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">260</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">228</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">270</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">190</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">211</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">215</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">176</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">209</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">231</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">160</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">189</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">219</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">79</span><span class="p">,</span> <span class="mi">230</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">230</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">192</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">225</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">203</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">182</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">245</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">240</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">215</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">175</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">199</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">215</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">206</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">186</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">212</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">224</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">260</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">228</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">270</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">190</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">211</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">215</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">176</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">209</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">231</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">160</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">189</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">219</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">79</span><span class="p">,</span> <span class="mi">230</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">230</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">192</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">225</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">203</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">182</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">245</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">240</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">215</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">69</span><span class="p">,</span> <span class="mi">185</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">71</span><span class="p">,</span> <span class="mi">175</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">199</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">215</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">206</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">186</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">188</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">212</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">224</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">260</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">78</span><span class="p">,</span> <span class="mi">228</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">270</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">190</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">205</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">210</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">73</span><span class="p">,</span> <span class="mi">211</span><span class="p">],</span>
+<span class="p">]</span>
+
+
+<span class="n">np_baseball</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">baseball</span><span class="p">)</span>
+
+<span class="c1"># Print out the 50th row of np_baseball</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np_baseball</span><span class="p">[</span><span class="mi">49</span><span class="p">])</span>
+
+<span class="c1"># Select the entire second column of np_baseball: np_weight_lb</span>
+<span class="n">np_weight_lb</span> <span class="o">=</span> <span class="n">np_baseball</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Print out height of 124th player</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np_baseball</span><span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[ 70 195]
+76
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2D-Arithmetic">2D Arithmetic<a class="anchor-link" href="#2D-Arithmetic">¶</a></h3><p>2D numpy arrays can perform calculations element by element, like numpy arrays.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">np_baseball</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">baseball</span><span class="p">)</span>
+
+<span class="c1"># Print out addition of np_baseball and updated</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np_baseball</span><span class="p">)</span>
+
+<span class="c1"># Create numpy array: conversion</span>
+<span class="n">conversion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0254</span><span class="p">,</span> <span class="mf">0.453592</span><span class="p">])</span>
+
+<span class="c1"># Print out product of np_baseball and conversion</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np_baseball</span> <span class="o">*</span> <span class="n">conversion</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[[ 74 180]
+ [ 74 215]
+ [ 72 210]
+ [ 72 210]
+ [ 73 188]
+ [ 69 176]
+ [ 69 209]
+ [ 71 200]
+ [ 76 231]
+ [ 71 180]
+ [ 73 188]
+ [ 73 180]
+ [ 74 185]
+ [ 74 160]
+ [ 69 180]
+ [ 70 185]
+ [ 73 189]
+ [ 75 185]
+ [ 78 219]
+ [ 79 230]
+ [ 76 205]
+ [ 74 230]
+ [ 76 195]
+ [ 72 180]
+ [ 71 192]
+ [ 75 225]
+ [ 77 203]
+ [ 74 195]
+ [ 73 182]
+ [ 74 188]
+ [ 78 200]
+ [ 73 180]
+ [ 75 200]
+ [ 73 200]
+ [ 75 245]
+ [ 75 240]
+ [ 74 215]
+ [ 69 185]
+ [ 71 175]
+ [ 74 199]
+ [ 73 200]
+ [ 73 215]
+ [ 76 200]
+ [ 74 205]
+ [ 74 206]
+ [ 70 186]
+ [ 72 188]
+ [ 77 220]
+ [ 74 210]
+ [ 70 195]
+ [ 73 200]
+ [ 75 200]
+ [ 76 212]
+ [ 76 224]
+ [ 78 210]
+ [ 74 205]
+ [ 74 220]
+ [ 76 195]
+ [ 77 200]
+ [ 81 260]
+ [ 78 228]
+ [ 75 270]
+ [ 77 200]
+ [ 75 210]
+ [ 76 190]
+ [ 74 220]
+ [ 72 180]
+ [ 72 205]
+ [ 75 210]
+ [ 73 220]
+ [ 73 211]
+ [ 74 180]
+ [ 74 215]
+ [ 72 210]
+ [ 72 210]
+ [ 73 188]
+ [ 69 176]
+ [ 69 209]
+ [ 71 200]
+ [ 76 231]
+ [ 71 180]
+ [ 73 188]
+ [ 73 180]
+ [ 74 185]
+ [ 74 160]
+ [ 69 180]
+ [ 70 185]
+ [ 73 189]
+ [ 75 185]
+ [ 78 219]
+ [ 79 230]
+ [ 76 205]
+ [ 74 230]
+ [ 76 195]
+ [ 72 180]
+ [ 71 192]
+ [ 75 225]
+ [ 77 203]
+ [ 74 195]
+ [ 73 182]
+ [ 74 188]
+ [ 78 200]
+ [ 73 180]
+ [ 75 200]
+ [ 73 200]
+ [ 75 245]
+ [ 75 240]
+ [ 74 215]
+ [ 69 185]
+ [ 71 175]
+ [ 74 199]
+ [ 73 200]
+ [ 73 215]
+ [ 76 200]
+ [ 74 205]
+ [ 74 206]
+ [ 70 186]
+ [ 72 188]
+ [ 77 220]
+ [ 74 210]
+ [ 70 195]
+ [ 73 200]
+ [ 75 200]
+ [ 76 212]
+ [ 76 224]
+ [ 78 210]
+ [ 74 205]
+ [ 74 220]
+ [ 76 195]
+ [ 77 200]
+ [ 81 260]
+ [ 78 228]
+ [ 75 270]
+ [ 77 200]
+ [ 75 210]
+ [ 76 190]
+ [ 74 220]
+ [ 72 180]
+ [ 72 205]
+ [ 75 210]
+ [ 73 220]
+ [ 73 211]
+ [ 74 180]
+ [ 74 215]
+ [ 72 210]
+ [ 72 210]
+ [ 73 188]
+ [ 69 176]
+ [ 69 209]
+ [ 71 200]
+ [ 76 231]
+ [ 71 180]
+ [ 73 188]
+ [ 73 180]
+ [ 74 185]
+ [ 74 160]
+ [ 69 180]
+ [ 70 185]
+ [ 73 189]
+ [ 75 185]
+ [ 78 219]
+ [ 79 230]
+ [ 76 205]
+ [ 74 230]
+ [ 76 195]
+ [ 72 180]
+ [ 71 192]
+ [ 75 225]
+ [ 77 203]
+ [ 74 195]
+ [ 73 182]
+ [ 74 188]
+ [ 78 200]
+ [ 73 180]
+ [ 75 200]
+ [ 73 200]
+ [ 75 245]
+ [ 75 240]
+ [ 74 215]
+ [ 69 185]
+ [ 71 175]
+ [ 74 199]
+ [ 73 200]
+ [ 73 215]
+ [ 76 200]
+ [ 74 205]
+ [ 74 206]
+ [ 70 186]
+ [ 72 188]
+ [ 77 220]
+ [ 74 210]
+ [ 70 195]
+ [ 73 200]
+ [ 75 200]
+ [ 76 212]
+ [ 76 224]
+ [ 78 210]
+ [ 74 205]
+ [ 74 220]
+ [ 76 195]
+ [ 77 200]
+ [ 81 260]
+ [ 78 228]
+ [ 75 270]
+ [ 77 200]
+ [ 75 210]
+ [ 76 190]
+ [ 74 220]
+ [ 72 180]
+ [ 72 205]
+ [ 75 210]
+ [ 73 220]
+ [ 73 211]]
+[[  1.8796    81.64656 ]
+ [  1.8796    97.52228 ]
+ [  1.8288    95.25432 ]
+ [  1.8288    95.25432 ]
+ [  1.8542    85.275296]
+ [  1.7526    79.832192]
+ [  1.7526    94.800728]
+ [  1.8034    90.7184  ]
+ [  1.9304   104.779752]
+ [  1.8034    81.64656 ]
+ [  1.8542    85.275296]
+ [  1.8542    81.64656 ]
+ [  1.8796    83.91452 ]
+ [  1.8796    72.57472 ]
+ [  1.7526    81.64656 ]
+ [  1.778     83.91452 ]
+ [  1.8542    85.728888]
+ [  1.905     83.91452 ]
+ [  1.9812    99.336648]
+ [  2.0066   104.32616 ]
+ [  1.9304    92.98636 ]
+ [  1.8796   104.32616 ]
+ [  1.9304    88.45044 ]
+ [  1.8288    81.64656 ]
+ [  1.8034    87.089664]
+ [  1.905    102.0582  ]
+ [  1.9558    92.079176]
+ [  1.8796    88.45044 ]
+ [  1.8542    82.553744]
+ [  1.8796    85.275296]
+ [  1.9812    90.7184  ]
+ [  1.8542    81.64656 ]
+ [  1.905     90.7184  ]
+ [  1.8542    90.7184  ]
+ [  1.905    111.13004 ]
+ [  1.905    108.86208 ]
+ [  1.8796    97.52228 ]
+ [  1.7526    83.91452 ]
+ [  1.8034    79.3786  ]
+ [  1.8796    90.264808]
+ [  1.8542    90.7184  ]
+ [  1.8542    97.52228 ]
+ [  1.9304    90.7184  ]
+ [  1.8796    92.98636 ]
+ [  1.8796    93.439952]
+ [  1.778     84.368112]
+ [  1.8288    85.275296]
+ [  1.9558    99.79024 ]
+ [  1.8796    95.25432 ]
+ [  1.778     88.45044 ]
+ [  1.8542    90.7184  ]
+ [  1.905     90.7184  ]
+ [  1.9304    96.161504]
+ [  1.9304   101.604608]
+ [  1.9812    95.25432 ]
+ [  1.8796    92.98636 ]
+ [  1.8796    99.79024 ]
+ [  1.9304    88.45044 ]
+ [  1.9558    90.7184  ]
+ [  2.0574   117.93392 ]
+ [  1.9812   103.418976]
+ [  1.905    122.46984 ]
+ [  1.9558    90.7184  ]
+ [  1.905     95.25432 ]
+ [  1.9304    86.18248 ]
+ [  1.8796    99.79024 ]
+ [  1.8288    81.64656 ]
+ [  1.8288    92.98636 ]
+ [  1.905     95.25432 ]
+ [  1.8542    99.79024 ]
+ [  1.8542    95.707912]
+ [  1.8796    81.64656 ]
+ [  1.8796    97.52228 ]
+ [  1.8288    95.25432 ]
+ [  1.8288    95.25432 ]
+ [  1.8542    85.275296]
+ [  1.7526    79.832192]
+ [  1.7526    94.800728]
+ [  1.8034    90.7184  ]
+ [  1.9304   104.779752]
+ [  1.8034    81.64656 ]
+ [  1.8542    85.275296]
+ [  1.8542    81.64656 ]
+ [  1.8796    83.91452 ]
+ [  1.8796    72.57472 ]
+ [  1.7526    81.64656 ]
+ [  1.778     83.91452 ]
+ [  1.8542    85.728888]
+ [  1.905     83.91452 ]
+ [  1.9812    99.336648]
+ [  2.0066   104.32616 ]
+ [  1.9304    92.98636 ]
+ [  1.8796   104.32616 ]
+ [  1.9304    88.45044 ]
+ [  1.8288    81.64656 ]
+ [  1.8034    87.089664]
+ [  1.905    102.0582  ]
+ [  1.9558    92.079176]
+ [  1.8796    88.45044 ]
+ [  1.8542    82.553744]
+ [  1.8796    85.275296]
+ [  1.9812    90.7184  ]
+ [  1.8542    81.64656 ]
+ [  1.905     90.7184  ]
+ [  1.8542    90.7184  ]
+ [  1.905    111.13004 ]
+ [  1.905    108.86208 ]
+ [  1.8796    97.52228 ]
+ [  1.7526    83.91452 ]
+ [  1.8034    79.3786  ]
+ [  1.8796    90.264808]
+ [  1.8542    90.7184  ]
+ [  1.8542    97.52228 ]
+ [  1.9304    90.7184  ]
+ [  1.8796    92.98636 ]
+ [  1.8796    93.439952]
+ [  1.778     84.368112]
+ [  1.8288    85.275296]
+ [  1.9558    99.79024 ]
+ [  1.8796    95.25432 ]
+ [  1.778     88.45044 ]
+ [  1.8542    90.7184  ]
+ [  1.905     90.7184  ]
+ [  1.9304    96.161504]
+ [  1.9304   101.604608]
+ [  1.9812    95.25432 ]
+ [  1.8796    92.98636 ]
+ [  1.8796    99.79024 ]
+ [  1.9304    88.45044 ]
+ [  1.9558    90.7184  ]
+ [  2.0574   117.93392 ]
+ [  1.9812   103.418976]
+ [  1.905    122.46984 ]
+ [  1.9558    90.7184  ]
+ [  1.905     95.25432 ]
+ [  1.9304    86.18248 ]
+ [  1.8796    99.79024 ]
+ [  1.8288    81.64656 ]
+ [  1.8288    92.98636 ]
+ [  1.905     95.25432 ]
+ [  1.8542    99.79024 ]
+ [  1.8542    95.707912]
+ [  1.8796    81.64656 ]
+ [  1.8796    97.52228 ]
+ [  1.8288    95.25432 ]
+ [  1.8288    95.25432 ]
+ [  1.8542    85.275296]
+ [  1.7526    79.832192]
+ [  1.7526    94.800728]
+ [  1.8034    90.7184  ]
+ [  1.9304   104.779752]
+ [  1.8034    81.64656 ]
+ [  1.8542    85.275296]
+ [  1.8542    81.64656 ]
+ [  1.8796    83.91452 ]
+ [  1.8796    72.57472 ]
+ [  1.7526    81.64656 ]
+ [  1.778     83.91452 ]
+ [  1.8542    85.728888]
+ [  1.905     83.91452 ]
+ [  1.9812    99.336648]
+ [  2.0066   104.32616 ]
+ [  1.9304    92.98636 ]
+ [  1.8796   104.32616 ]
+ [  1.9304    88.45044 ]
+ [  1.8288    81.64656 ]
+ [  1.8034    87.089664]
+ [  1.905    102.0582  ]
+ [  1.9558    92.079176]
+ [  1.8796    88.45044 ]
+ [  1.8542    82.553744]
+ [  1.8796    85.275296]
+ [  1.9812    90.7184  ]
+ [  1.8542    81.64656 ]
+ [  1.905     90.7184  ]
+ [  1.8542    90.7184  ]
+ [  1.905    111.13004 ]
+ [  1.905    108.86208 ]
+ [  1.8796    97.52228 ]
+ [  1.7526    83.91452 ]
+ [  1.8034    79.3786  ]
+ [  1.8796    90.264808]
+ [  1.8542    90.7184  ]
+ [  1.8542    97.52228 ]
+ [  1.9304    90.7184  ]
+ [  1.8796    92.98636 ]
+ [  1.8796    93.439952]
+ [  1.778     84.368112]
+ [  1.8288    85.275296]
+ [  1.9558    99.79024 ]
+ [  1.8796    95.25432 ]
+ [  1.778     88.45044 ]
+ [  1.8542    90.7184  ]
+ [  1.905     90.7184  ]
+ [  1.9304    96.161504]
+ [  1.9304   101.604608]
+ [  1.9812    95.25432 ]
+ [  1.8796    92.98636 ]
+ [  1.8796    99.79024 ]
+ [  1.9304    88.45044 ]
+ [  1.9558    90.7184  ]
+ [  2.0574   117.93392 ]
+ [  1.9812   103.418976]
+ [  1.905    122.46984 ]
+ [  1.9558    90.7184  ]
+ [  1.905     95.25432 ]
+ [  1.9304    86.18248 ]
+ [  1.8796    99.79024 ]
+ [  1.8288    81.64656 ]
+ [  1.8288    92.98636 ]
+ [  1.905     95.25432 ]
+ [  1.8542    99.79024 ]
+ [  1.8542    95.707912]]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="NumPy:-Basic-Statistics">NumPy: Basic Statistics<a class="anchor-link" href="#NumPy:-Basic-Statistics">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="image.png" src="./image%20copy%205.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="image.png" src="./image%20copy%204.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="image.png" src="./image%20copy%206.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Average-versus-median">Average versus median<a class="anchor-link" href="#Average-versus-median">¶</a></h3><p>You now know how to use numpy functions to get a better feeling for your data.</p>
+<p>The baseball data is available as a 2D numpy array with 3 columns (height, weight, age) and 1015 rows. The name of this numpy array is np_baseball. After restructuring the data, however, you notice that some height values are abnormally high. Follow the instructions and discover which summary statistic is best suited if you're dealing with so-called outliers. np_baseball is available.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">np_baseball</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">baseball</span><span class="p">)</span>
+
+<span class="c1"># Create np_height_in from np_baseball</span>
+<span class="n">np_height_in</span> <span class="o">=</span> <span class="n">np_baseball</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Print out the mean of np_height_in</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np_height_in</span><span class="p">))</span>
+
+<span class="c1"># Print out the median of np_height_in</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np_height_in</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>73.95774647887323
+74.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np_baseball</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Average: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">avg</span><span class="p">))</span>
+
+<span class="c1"># Print median height</span>
+<span class="n">med</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np_baseball</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Median: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">med</span><span class="p">))</span>
+
+<span class="c1"># Print out the standard deviation on height</span>
+<span class="n">stddev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np_baseball</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Standard Deviation: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">stddev</span><span class="p">))</span>
+
+<span class="c1"># Print out correlation between first and second column</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">np_baseball</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">np_baseball</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Correlation: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">corr</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Average: 73.95774647887323
+Median: 74.0
+Standard Deviation: 2.474868724464526
+Correlation: [[1.         0.52065005]
+ [0.52065005 1.        ]]
+</pre>
+</div>
 </div>
 </div>
 </div>
