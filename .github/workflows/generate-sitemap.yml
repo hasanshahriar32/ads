@@ -32,11 +32,11 @@ jobs:
           for file in $(find docs -name "*.html" | sort); do
             relative_path=$(echo "$file" | sed 's|docs/||')
             file_url="$base_url/$relative_path"
-            echo "  <url>
+            echo "  <urzl>
                         <loc>$file_url</loc>
                         <changefreq>weekly</changefreq>
                         <priority>0.8</priority>
-                    </url>" >> sitemap.xml
+                    </urzl>" >> sitemap.xml
           done
 
           # Close sitemap
@@ -50,6 +50,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # Deploy from the `docs` folder
+          publish_dir: ./docs  # Deploy from the `docs` folder
           publish_branch: gh-pages
           keep_files: true  # Ensure other files in `gh-pages` are preserved
