@@ -45,7 +45,8 @@ jobs:
                   </head>
                   <body class='bg-gray-100 p-8'>
                     <div class='container mx-auto'>
-                      <h1 class='text-4xl font-semibold text-center mb-4'>Index of Notebooks</h1>
+                      <h1 class='text-4xl font-semibold text-center mb-2'>Notes of <a class='hover:text-purple' href="https://app.datacamp.com/learn/career-tracks/associate-data-scientist-in-python">Associate Data Scientist in Python</a> track.</h1>
+                      <a href='https://github.com/hasanshahriar32/ads' class='text-md text-center mb-4'>GITHUB REPOSITORY</a>
                       <ul class='space-y-4'>" > docs/index.html
 
           # Function to close open <details> tags based on depth

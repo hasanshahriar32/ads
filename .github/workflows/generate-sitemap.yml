@@ -1,0 +1,69 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main  # Trigger when the main branch is updated
+
+jobs:
+  generate-sitemap:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python (if needed)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'  # Adjust as needed
+
+      # Step 3: Generate Sitemap
+      - name: Create Sitemap
+        run: |
+          # Create sitemap header
+          echo "<?xml version='1.0' encoding='UTF-8'?>" > sitemap.xml
+          echo "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>" >> sitemap.xml
+
+          # Iterate through HTML files in the docs directory and add to the sitemap
+          base_url="https://your-username.github.io/ads"  # Replace with your GitHub Pages URL
+          for file in $(find docs -name "*.html" | sort); do
+            relative_path=$(echo "$file" | sed 's|docs/||')
+            file_url="$base_url/$relative_path"
+            echo "  <url>
+                        <loc>$file_url</loc>
+                        <changefreq>weekly</changefreq>
+                        <priority>0.8</priority>
+                    </url>" >> sitemap.xml
+          done
+
+          # Close sitemap
+          echo "</urlset>" >> sitemap.xml
+
+          # Print the generated sitemap for debugging
+          cat sitemap.xml
+
+      # Step 4: Deploy Sitemap to GitHub Pages
+      - name: Deploy Sitemap to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs  # Deploy from the `docs` folder
+          publish_branch: gh-pages
+          keep_files: true  # Ensure other files in `gh-pages` are preserved
+
+        # Step 4: Move Sitemap to docs directory
+      - name: Move Sitemap to root directory
+        run: mv sitemap.xml /
+
+        # Step 5: Deploy Sitemap to GitHub Pages
+      - name: Deploy Sitemap to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./docs  # Deploy from the `docs` folder
+            publish_branch: gh-pages
+            keep_files: true  # Ensure other files in `gh-pages` are preserved
+        
