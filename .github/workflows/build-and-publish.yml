@@ -129,19 +129,20 @@ jobs:
       # Step 5: Generate Sitemap
       - name: Generate Sitemap
         run: |
-          echo "<?xml version='1.0' encoding='UTF-8'?>" > sitemap.xml
-          echo "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>" >> sitemap.xml
+          echo "<?xml version='1.0' encoding='UTF-8'?>" > docs/sitemap.xml
+          echo "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>" >> docs/sitemap.xml
           base_url="https://hasanshahriar32.github.io/ads"
           for file in $(find docs -name "*.html" | sort); do
             relative_path=$(echo "$file" | sed 's|docs/||')
             file_url="$base_url/$relative_path"
             echo "  <url>
-                        <loc>$file_url</loc>
-                        <changefreq>weekly</changefreq>
-                        <priority>0.8</priority>
-                    </url>" >> sitemap.xml
+              <loc>$file_url</loc>
+              <changefreq>weekly</changefreq>
+              <priority>0.8</priority>
+            </url>" >> docs/sitemap.xml
           done
           echo "</urlset>" >> docs/sitemap.xml
+
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
