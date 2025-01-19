@@ -26,13 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # # Step 4: Prepare Output Directory and Copy Data
-      # - name: Prepare Output Directory and Copy Data
-      #   run: |
-      #     mkdir -p docs
-      #     cp -r ./data ./work  
-
-      # Step 5: Convert Notebooks and Preserve Folder Structure
+      # Step 4: Convert Notebooks and Preserve Folder Structure
       - name: Convert Notebooks and Preserve Folder Structure
         run: |
           # Start the Index Page with TailwindCSS CDN
@@ -45,7 +39,7 @@ jobs:
                   </head>
                   <body class='bg-gray-100 p-8'>
                     <div class='container mx-auto'>
-                      <h1 class='text-4xl font-semibold text-center mb-2'>Notes of <a class='hover:text-purple' href="https://app.datacamp.com/learn/career-tracks/associate-data-scientist-in-python">Associate Data Scientist in Python</a> track.</h1>
+                      <h1 class='text-4xl font-semibold text-center mb-2'>Notes of <a class='hover:text-purple' href='https://app.datacamp.com/learn/career-tracks/associate-data-scientist-in-python'>Associate Data Scientist in Python</a> track.</h1>
                       <a href='https://github.com/hasanshahriar32/ads' class='text-md text-center mb-4'>GITHUB REPOSITORY</a>
                       <ul class='space-y-4'>" > docs/index.html
 
@@ -132,13 +126,28 @@ jobs:
           # Close the index page HTML
           echo "</ul></div></body></html>" >> docs/index.html
 
-          echo "Contents of docs folder after conversion:"
-          ls -R docs
+      # Step 5: Generate Sitemap
+      - name: Generate Sitemap
+        run: |
+          echo "<?xml version='1.0' encoding='UTF-8'?>" > sitemap.xml
+          echo "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>" >> sitemap.xml
+          base_url="https://hasanshahriar32.github.io/ads"
+          for file in $(find docs -name "*.html" | sort); do
+            relative_path=$(echo "$file" | sed 's|docs/||')
+            file_url="$base_url/$relative_path"
+            echo "  <url>
+                        <loc>$file_url</loc>
+                        <changefreq>weekly</changefreq>
+                        <priority>0.8</priority>
+                    </url>" >> sitemap.xml
+          done
+          echo "</urlset>" >> sitemap.xml
 
-     # Step 6: Deploy to GitHub Pages
+      # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
           publish_branch: gh-pages
+          keep_files: true
