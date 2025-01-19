@@ -45,22 +45,11 @@ jobs:
           # Print the generated sitemap for debugging
           cat sitemap.xml
 
-      # Step 4: Deploy to GitHub Pages
-      - name: Deploy Sitemap and Docs to GitHub Pages
+      # Step 4: Deploy Sitemap to GitHub Pages
+      - name: Deploy Sitemap to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./  # Deploy from the `docs` folder
           publish_branch: gh-pages
           keep_files: true  # Ensure other files in `gh-pages` are preserved
-
-      # Step 5: Deploy Sitemap to Root of gh-pages
-      - name: Commit and Push Sitemap
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin gh-pages
-          git checkout gh-pages
-          git add sitemap.xml
-          git commit -m "Add sitemap.xml to the root of gh-pages"
-          git push origin gh-pages
