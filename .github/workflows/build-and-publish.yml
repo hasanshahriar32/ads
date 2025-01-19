@@ -141,7 +141,7 @@ jobs:
                         <priority>0.8</priority>
                     </url>" >> sitemap.xml
           done
-          echo "</urlset>" >> sitemap.xml
+          echo "</urlset>" >> docs/sitemap.xml
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
