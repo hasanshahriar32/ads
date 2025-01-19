@@ -26,10 +26,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Convert Notebooks and Preserve Folder Structure
-      - name: Convert Notebooks and Preserve Folder Structure
+      # Step 4: Convert Notebooks and Enhance Index Page Design
+      - name: Convert Notebooks and Enhance Index Page Design
         run: |
-          # Start the Index Page with TailwindCSS CDN
+          # Start the Index Page with TailwindCSS CDN and Headless UI Accordion
           echo "<html lang='en'>
                   <head>
                     <meta charset='UTF-8'>
@@ -39,14 +39,19 @@ jobs:
                   </head>
                   <body class='bg-gray-100 p-8'>
                     <div class='container mx-auto'>
-                      <h1 class='text-4xl font-semibold text-center mb-2'>Notes of <a class='hover:text-purple' href='https://app.datacamp.com/learn/career-tracks/associate-data-scientist-in-python'>Associate Data Scientist in Python</a> track.</h1>
-                      <a href='https://github.com/hasanshahriar32/ads' class='text-md text-center mb-4'>GITHUB REPOSITORY</a>
-                      <ul class='space-y-4'>" > docs/index.html
+                      <h1 class='text-4xl font-semibold text-center mb-6 text-indigo-600'>
+                        Notes of <a href='https://app.datacamp.com/learn/career-tracks/associate-data-scientist-in-python' class='underline hover:text-indigo-800'>Associate Data Scientist in Python</a> track.
+                      </h1>
+                      <p class='text-center text-lg mb-8'>
+                        Explore detailed notes organized by topics and sections. For more details, visit the
+                        <a href='https://github.com/hasanshahriar32/ads' class='underline text-blue-600 hover:text-blue-800'>GitHub Repository</a>.
+                      </p>
+                      <div id='accordion' class='space-y-4'>" > docs/index.html
 
-          # Function to close open <details> tags based on depth
-          close_open_details() {
+          # Function to close open accordion panels based on depth
+          close_open_accordion() {
             while [ $current_depth -gt $1 ]; do
-              echo "</ul></details>" >> docs/index.html
+              echo "</div></details>" >> docs/index.html
               current_depth=$((current_depth - 1))
             done
           }
@@ -101,30 +106,30 @@ jobs:
             IFS="/" read -ra DIR_PARTS <<< "$relative_dir"
             for (( i=0; i<${#DIR_PARTS[@]}; i++ )); do
               if [ $i -ge $current_depth ] || [ "${DIR_PARTS[i]}" != "$(echo $prev_dir | cut -d/ -f$((i + 1)))" ]; then
-                close_open_details $i
+                close_open_accordion $i
                 echo "<details class='bg-white rounded-lg shadow-md'>
                         <summary class='p-4 text-xl font-medium bg-gray-200 hover:bg-gray-300 rounded-t-lg'>
                           ${DIR_PARTS[i]}
                         </summary>
-                        <ul class='pl-6 space-y-2'>" >> docs/index.html
+                        <div class='pl-6 space-y-2'>" >> docs/index.html
                 current_depth=$((current_depth + 1))
               fi
             done
 
             # Add notebook link at the correct level
             notebook_name=$(basename "$notebook" .ipynb)
-            echo "<li>
+            echo "<p>
                     <a href=\"$relative_dir/$notebook_name.html\" class='p-2 text-lg text-blue-600 hover:text-blue-800'>$notebook_name</a>
-                  </li>" >> docs/index.html
+                  </p>" >> docs/index.html
 
             prev_dir=$relative_dir
           done
 
           # Close all remaining open tags
-          close_open_details 0
+          close_open_accordion 0
 
           # Close the index page HTML
-          echo "</ul></div></body></html>" >> docs/index.html
+          echo "</div></div></body></html>" >> docs/index.html
 
       # Step 5: Generate Sitemap
       - name: Generate Sitemap
@@ -142,7 +147,6 @@ jobs:
             </url>" >> docs/sitemap.xml
           done
           echo "</urlset>" >> docs/sitemap.xml
-
 
       # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
