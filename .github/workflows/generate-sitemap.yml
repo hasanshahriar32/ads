@@ -53,3 +53,13 @@ jobs:
           publish_dir: ./docs  # Deploy from the `docs` folder
           publish_branch: gh-pages
           keep_files: true  # Ensure other files in `gh-pages` are preserved
+
+      # Step 5: Commit and Push Changes
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "
+          git config --local user.name "GitHub Actions"
+          git add sitemap.xml
+          git commit -m "Add sitemap.xml"
+          git push
+          
