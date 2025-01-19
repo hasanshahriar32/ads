@@ -54,12 +54,13 @@ jobs:
           publish_branch: gh-pages
           keep_files: true  # Ensure other files in `gh-pages` are preserved
 
-      # Step 5: Commit and Push Changes
-      - name: Commit and Push Changes
+      # Step 5: Add Sitemap to gh-pages Root
+      - name: Add Sitemap to gh-pages Root
         run: |
-          git config --local user.email "
-          git config --local user.name "GitHub Actions"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages
+          git checkout gh-pages
           git add sitemap.xml
-          git commit -m "Add sitemap.xml"
-          git push
-          
+          git commit -m "Add or update sitemap.xml at the root of gh-pages"
+          git push origin gh-pages
