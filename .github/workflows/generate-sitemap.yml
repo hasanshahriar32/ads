@@ -50,7 +50,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs  # Deploy from the `docs` folder
+          publish_dir: ./  # Deploy from the `docs` folder
           publish_branch: gh-pages
           keep_files: true  # Ensure other files in `gh-pages` are preserved
 
@@ -61,7 +61,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin gh-pages
           git checkout gh-pages
-          mv sitemap.xml .
           git add sitemap.xml
           git commit -m "Add sitemap.xml to the root of gh-pages"
           git push origin gh-pages
