@@ -1,3 +1,4 @@
+# YAML script begins
 name: Build and Publish Notebooks
 
 on:
@@ -10,32 +11,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  # Adjust as needed
+          python-version: '3.9'
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Convert Notebooks and Enhance Index Page Design
       - name: Convert Notebooks and Enhance Index Page Design
         run: |
-          # Start the Index Page with TailwindCSS CDN and Headless UI Accordion
+          # Start the Index Page with enhanced UI
           echo "<html lang='en'>
                   <head>
                     <meta charset='UTF-8'>
                     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
                     <title>Index of Notebooks</title>
                     <script src='https://cdn.tailwindcss.com'></script>
+                    <script src='https://unpkg.com/@headlessui/react'></script>
+                    <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' rel='stylesheet'>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/heroicons/1.0.6/outline.min.js'></script>
                     <script type="text/javascript">
                     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
                     (function(){
@@ -48,18 +48,18 @@ jobs:
                     })();
                     </script>
                   </head>
-                  <body class='bg-gray-100 p-8'>
+                  <body class='bg-gray-100 font-inter p-8'>
                     <div class='container mx-auto'>
                       <h1 class='text-4xl font-semibold text-center mb-6 text-indigo-600'>
-                        Notes of <a href='https://app.datacamp.com/learn/career-tracks/associate-data-scientist-in-python' class='underline hover:text-indigo-800'>Associate Data Scientist in Python</a> track.
+                        Notes of <a href='https://app.datacamp.com/learn/career-tracks/associate-data-scientist-in-python' class='underline hover:text-indigo-800'>Associate Data Scientist in Python</a> track
                       </h1>
-                      <p class='text-center text-lg mb-8'>
+                      <p class='text-center text-lg mb-8 text-gray-700'>
                         Explore detailed notes organized by topics and sections. For more details, visit the
                         <a href='https://github.com/hasanshahriar32/ads' class='underline text-blue-600 hover:text-blue-800'>GitHub Repository</a>.
                       </p>
                       <div id='accordion' class='space-y-4'>" > docs/index.html
 
-          # Function to close open accordion panels based on depth
+          # Accordion creation logic
           close_open_accordion() {
             while [ $current_depth -gt $1 ]; do
               echo "</div></details>" >> docs/index.html
@@ -67,32 +67,25 @@ jobs:
             done
           }
 
-          # Initialize variables
           current_depth=0
           prev_dir=""
 
-          # Process each notebook
           for notebook in $(find ./ -name "*.ipynb" | sort); do
-            relative_dir=$(dirname "$notebook" | sed 's|^./||')  # Extract relative path
+            relative_dir=$(dirname "$notebook" | sed 's|^./||')
             output_dir="docs/$relative_dir"
             mkdir -p "$output_dir"
             
-            # Convert notebook to HTML
             jupyter nbconvert --execute --to html "$notebook" --output-dir "$output_dir"
 
-            # Add a back button to the top of the converted HTML file
             notebook_name=$(basename "$notebook" .ipynb)
             html_file="$output_dir/$notebook_name.html"
-
-            # Prepend the back button to the HTML file
             sed -i "1i \
             <div style='margin: 20px;'>\
-              <a href='/ads' style='font-size: 16px; color: blue; text-decoration: underline;'>\
+              <a href='/ads' class='text-sm text-blue-600 hover:underline'>\
                 ← Back to Index\
               </a>\
             </div>" "$html_file"
-            
-            # Add Giscus script at the end of the HTML file
+
             echo "<script src='https://giscus.app/client.js'
                     data-repo='hasanshahriar32/ads'
                     data-repo-id='R_kgDONo5wEw'
@@ -109,40 +102,35 @@ jobs:
                     async>
                   </script>" >> "$html_file"
             
-            # Copy contents of the parent directory
             parent_dir=$(dirname "$notebook")
             cp -r "$parent_dir/"* "$output_dir/" || true
 
-            # Build navigation structure
             IFS="/" read -ra DIR_PARTS <<< "$relative_dir"
             for (( i=0; i<${#DIR_PARTS[@]}; i++ )); do
               if [ $i -ge $current_depth ] || [ "${DIR_PARTS[i]}" != "$(echo $prev_dir | cut -d/ -f$((i + 1)))" ]; then
                 close_open_accordion $i
-                echo "<details class='bg-white rounded-lg shadow-md'>
-                        <summary class='p-4 text-xl font-medium bg-gray-200 hover:bg-gray-300 rounded-t-lg'>
-                          ${DIR_PARTS[i]}
+                echo "<details class='bg-white shadow rounded-lg'>
+                        <summary class='p-4 text-xl font-medium flex items-center space-x-2 bg-gray-200 hover:bg-gray-300 rounded-t-lg cursor-pointer'>
+                          <span>${DIR_PARTS[i]}</span>
+                          <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' class='w-5 h-5'>
+                            <path stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7' />
+                          </svg>
                         </summary>
                         <div class='pl-6 space-y-2'>" >> docs/index.html
                 current_depth=$((current_depth + 1))
               fi
             done
 
-            # Add notebook link at the correct level
-            notebook_name=$(basename "$notebook" .ipynb)
             echo "<p>
-                    <a href=\"$relative_dir/$notebook_name.html\" class='p-2 text-lg text-blue-600 hover:text-blue-800'>$notebook_name</a>
+                    <a href=\"$relative_dir/$notebook_name.html\" class='text-lg text-indigo-500 hover:underline'>$notebook_name</a>
                   </p>" >> docs/index.html
 
             prev_dir=$relative_dir
           done
 
-          # Close all remaining open tags
           close_open_accordion 0
-
-          # Close the index page HTML
           echo "</div></div></body></html>" >> docs/index.html
 
-      # Step 5: Generate Sitemap
       - name: Generate Sitemap
         run: |
           echo "<?xml version='1.0' encoding='UTF-8'?>" > docs/sitemap.xml
@@ -159,7 +147,6 @@ jobs:
           done
           echo "</urlset>" >> docs/sitemap.xml
 
-      # Step 6: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
