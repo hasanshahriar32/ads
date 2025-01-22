@@ -101,6 +101,25 @@ jobs:
               async>
             </script>" >> "$html_file"
 
+
+            echo "<div>
+            <script type="text/javascript">
+              function googleTranslateElementInit() {
+              new google.translate.TranslateElement(
+                      {pageLanguage: 'en'},
+                      'google_translate_element'
+              );
+              }
+              </script>
+              <script
+                async
+                type="text/javascript"
+                src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+              ></script>
+              <div id="google_translate_element">
+              </div>
+            " >> "$html_file"
+
             parent_dir=$(dirname "$notebook")
             cp -r "$parent_dir/"* "$output_dir/" || true
 
