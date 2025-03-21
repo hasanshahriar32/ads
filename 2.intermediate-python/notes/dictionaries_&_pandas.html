@@ -7487,6 +7487,132 @@ a.anchor-link {
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">world</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"afghanistan"</span><span class="p">:</span><span class="mf">30.55</span><span class="p">,</span> <span class="s2">"albania"</span><span class="p">:</span><span class="mf">2.77</span><span class="p">,</span> <span class="s2">"algeria"</span><span class="p">:</span><span class="mf">39.21</span><span class="p">}</span>
+<span class="n">world</span><span class="p">[</span><span class="s2">"albania"</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>2.77</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Create-dictionary">Create dictionary<a class="anchor-link" href="#Create-dictionary">¶</a></h3><p>The countries and capitals lists are again available in the script. It's your job to convert this data to a dictionary where the country names are the keys and the capitals are the corresponding values. As a refresher, here is a recipe for creating a dictionary:</p>
+<p>my_dict = {
+   "key1":"value1",
+   "key2":"value2",
+}</p>
+<p>In this recipe, both the keys and the values are strings. This will also be the case for this exercise.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Definition of countries and capital</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'spain'</span><span class="p">,</span> <span class="s1">'france'</span><span class="p">,</span> <span class="s1">'germany'</span><span class="p">,</span> <span class="s1">'norway'</span><span class="p">]</span>
+<span class="n">capitals</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'madrid'</span><span class="p">,</span> <span class="s1">'paris'</span><span class="p">,</span> <span class="s1">'berlin'</span><span class="p">,</span> <span class="s1">'oslo'</span><span class="p">]</span>
+
+<span class="c1"># From string in countries and capitals, create dictionary europe</span>
+<span class="n">europe</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'spain'</span><span class="p">:</span><span class="s1">'madrid'</span><span class="p">,</span> <span class="s1">'france'</span><span class="p">:</span><span class="s1">'paris'</span><span class="p">,</span> <span class="s1">'germany'</span><span class="p">:</span><span class="s1">'berlin'</span><span class="p">,</span> <span class="s1">'norway'</span><span class="p">:</span><span class="s1">'oslo'</span> <span class="p">}</span>
+
+<span class="c1"># Print europe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">europe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>{'spain': 'madrid', 'france': 'paris', 'germany': 'berlin', 'norway': 'oslo'}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Access-dictionary">Access dictionary<a class="anchor-link" href="#Access-dictionary">¶</a></h3><p>If the keys of a dictionary are chosen wisely, accessing the values in a dictionary is easy and intuitive. For example, to get the capital for France from europe you can use:</p>
+<p>europe['france']</p>
+<p>Here, 'france' is the key and 'paris' the value is returned.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Definition of dictionary</span>
+<span class="n">europe</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'spain'</span><span class="p">:</span><span class="s1">'madrid'</span><span class="p">,</span> <span class="s1">'france'</span><span class="p">:</span><span class="s1">'paris'</span><span class="p">,</span> <span class="s1">'germany'</span><span class="p">:</span><span class="s1">'berlin'</span><span class="p">,</span> <span class="s1">'norway'</span><span class="p">:</span><span class="s1">'oslo'</span> <span class="p">}</span>
+
+<span class="c1"># Print out the keys in europe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">europe</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="c1"># Print out value that belongs to key 'norway'</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">europe</span><span class="p">[</span><span class="s1">'norway'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>dict_keys(['spain', 'france', 'germany', 'norway'])
+oslo
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </main>
 </body>
