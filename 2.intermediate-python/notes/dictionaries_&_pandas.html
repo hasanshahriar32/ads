@@ -7614,6 +7614,654 @@ oslo
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Dictionaries,-Part-2">Dictionaries, Part 2<a class="anchor-link" href="#Dictionaries,-Part-2">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#create new entity to existing dictionary</span>
+<span class="n">world</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'afghanistan'</span><span class="p">:</span> <span class="mf">30.55</span><span class="p">,</span> <span class="s1">'albania'</span><span class="p">:</span> <span class="mf">2.81</span><span class="p">,</span> <span class="s1">'algeria'</span><span class="p">:</span> <span class="mf">39.21</span><span class="p">}</span>
+
+<span class="n">world</span><span class="p">[</span><span class="s1">'sealand'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.55</span>
+<span class="n">world</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>{'afghanistan': 30.55, 'albania': 2.81, 'algeria': 39.21, 'sealand': 5.55}</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># update value corresponding to any key</span>
+<span class="n">world</span><span class="p">[</span><span class="s1">'sealand'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">9.55</span>
+<span class="n">world</span>
+
+<span class="c1"># we used same syntax for creationg and updating the {"seland" : value} pair. that means it checks whether the key 'sealand' exists there or not. if exists, it updates the value else it creates new pair.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>{'afghanistan': 30.55, 'albania': 2.81, 'algeria': 39.21, 'sealand': 9.55}</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># remove any pair from dictionary</span>
+<span class="k">del</span><span class="p">(</span><span class="n">world</span><span class="p">[</span><span class="s1">'sealand'</span><span class="p">])</span>
+<span class="n">world</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>{'afghanistan': 30.55, 'albania': 2.81, 'algeria': 39.21}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Remember lists? They could contain anything, even other lists. Well, for dictionaries the same holds. Dictionaries can contain key:value pairs where the values are again dictionaries.</p>
+<p>As an example, have a look at the script where another version of europe - the dictionary you've been working with all along - is coded. The keys are still the country names, but the values are dictionaries that contain more information than just the capital.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> <span class="c1"># Dictionary of dictionaries</span>
+<span class="n">europe</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'spain'</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'capital'</span><span class="p">:</span><span class="s1">'madrid'</span><span class="p">,</span> <span class="s1">'population'</span><span class="p">:</span><span class="mf">46.77</span> <span class="p">},</span>
+           <span class="s1">'france'</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'capital'</span><span class="p">:</span><span class="s1">'paris'</span><span class="p">,</span> <span class="s1">'population'</span><span class="p">:</span><span class="mf">66.03</span> <span class="p">},</span>
+           <span class="s1">'germany'</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'capital'</span><span class="p">:</span><span class="s1">'berlin'</span><span class="p">,</span> <span class="s1">'population'</span><span class="p">:</span><span class="mf">80.62</span> <span class="p">},</span>
+           <span class="s1">'norway'</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'capital'</span><span class="p">:</span><span class="s1">'oslo'</span><span class="p">,</span> <span class="s1">'population'</span><span class="p">:</span><span class="mf">5.084</span> <span class="p">}</span> <span class="p">}</span>
+
+
+<span class="c1"># Print out the capital of France</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">europe</span><span class="p">[</span><span class="s1">'france'</span><span class="p">][</span><span class="s1">'capital'</span><span class="p">])</span>
+
+<span class="c1"># Create sub-dictionary data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'capital'</span><span class="p">:</span><span class="s1">'rome'</span><span class="p">,</span> <span class="s1">'population'</span><span class="p">:</span><span class="mf">59.83</span><span class="p">}</span>
+
+<span class="c1"># Add data to europe under key 'italy'</span>
+<span class="n">europe</span><span class="p">[</span><span class="s1">'italy'</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+
+<span class="c1"># Print europe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">europe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>paris
+{'spain': {'capital': 'madrid', 'population': 46.77}, 'france': {'capital': 'paris', 'population': 66.03}, 'germany': {'capital': 'berlin', 'population': 80.62}, 'norway': {'capital': 'oslo', 'population': 5.084}, 'italy': {'capital': 'rome', 'population': 59.83}}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Pandas,-Part-1">Pandas, Part 1<a class="anchor-link" href="#Pandas,-Part-1">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="image copy 4.png" src="./images/image%20copy%204.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>numpy is efficient for same type of data</li>
+<li>pandas is efficient for different type of data</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">"country"</span><span class="p">:[</span><span class="s2">"Brazil"</span><span class="p">,</span> <span class="s2">"Russia"</span><span class="p">,</span> <span class="s2">"India"</span><span class="p">,</span> <span class="s2">"China"</span><span class="p">,</span> <span class="s2">"South Africa"</span><span class="p">],</span>
+<span class="s2">"capital"</span><span class="p">:[</span><span class="s2">"Brasilia"</span><span class="p">,</span> <span class="s2">"Moscow"</span><span class="p">,</span> <span class="s2">"New Delhi"</span><span class="p">,</span> <span class="s2">"Beijing"</span><span class="p">,</span> <span class="s2">"Pretoria"</span><span class="p">],</span>
+<span class="s2">"area"</span><span class="p">:[</span><span class="mf">8.516</span><span class="p">,</span> <span class="mf">17.10</span><span class="p">,</span> <span class="mf">3.286</span><span class="p">,</span> <span class="mf">9.597</span><span class="p">,</span> <span class="mf">1.221</span><span class="p">],</span>
+<span class="s2">"population"</span><span class="p">:[</span><span class="mf">200.4</span><span class="p">,</span> <span class="mf">143.5</span><span class="p">,</span> <span class="mi">1252</span><span class="p">,</span> <span class="mi">1357</span><span class="p">,</span> <span class="mf">52.98</span><span class="p">]</span> <span class="p">}</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">brics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+
+<span class="n">brics</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>country</th>
+<th>capital</th>
+<th>area</th>
+<th>population</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>Brazil</td>
+<td>Brasilia</td>
+<td>8.516</td>
+<td>200.40</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Russia</td>
+<td>Moscow</td>
+<td>17.100</td>
+<td>143.50</td>
+</tr>
+<tr>
+<th>2</th>
+<td>India</td>
+<td>New Delhi</td>
+<td>3.286</td>
+<td>1252.00</td>
+</tr>
+<tr>
+<th>3</th>
+<td>China</td>
+<td>Beijing</td>
+<td>9.597</td>
+<td>1357.00</td>
+</tr>
+<tr>
+<th>4</th>
+<td>South Africa</td>
+<td>Pretoria</td>
+<td>1.221</td>
+<td>52.98</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># changing the index of the dataframe</span>
+
+<span class="n">brics</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'BR'</span><span class="p">,</span> <span class="s1">'RU'</span> <span class="p">,</span> <span class="s1">'IN'</span><span class="p">,</span> <span class="s1">'CH'</span><span class="p">,</span> <span class="s1">'SA'</span><span class="p">]</span>
+<span class="n">brics</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>country</th>
+<th>capital</th>
+<th>area</th>
+<th>population</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>BR</th>
+<td>Brazil</td>
+<td>Brasilia</td>
+<td>8.516</td>
+<td>200.40</td>
+</tr>
+<tr>
+<th>RU</th>
+<td>Russia</td>
+<td>Moscow</td>
+<td>17.100</td>
+<td>143.50</td>
+</tr>
+<tr>
+<th>IN</th>
+<td>India</td>
+<td>New Delhi</td>
+<td>3.286</td>
+<td>1252.00</td>
+</tr>
+<tr>
+<th>CH</th>
+<td>China</td>
+<td>Beijing</td>
+<td>9.597</td>
+<td>1357.00</td>
+</tr>
+<tr>
+<th>SA</th>
+<td>South Africa</td>
+<td>Pretoria</td>
+<td>1.221</td>
+<td>52.98</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="read-external-data-with-pandas">read external data with pandas<a class="anchor-link" href="#read-external-data-with-pandas">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">brics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./data/brics.csv'</span><span class="p">)</span>
+<span class="n">brics</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Unnamed: 0</th>
+<th>country</th>
+<th>capital</th>
+<th>area</th>
+<th>population</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>BR</td>
+<td>Brazil</td>
+<td>Brasilia</td>
+<td>8.516</td>
+<td>200.40</td>
+</tr>
+<tr>
+<th>1</th>
+<td>RU</td>
+<td>Russia</td>
+<td>Moscow</td>
+<td>17.100</td>
+<td>143.50</td>
+</tr>
+<tr>
+<th>2</th>
+<td>IN</td>
+<td>India</td>
+<td>New Delhi</td>
+<td>3.286</td>
+<td>1252.00</td>
+</tr>
+<tr>
+<th>3</th>
+<td>CH</td>
+<td>China</td>
+<td>Beijing</td>
+<td>9.597</td>
+<td>1357.00</td>
+</tr>
+<tr>
+<th>4</th>
+<td>SA</td>
+<td>South Africa</td>
+<td>Pretoria</td>
+<td>1.221</td>
+<td>52.98</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># previous data reading is taking one extra index.. unnecessarily</span>
+<span class="c1"># instead do following to skip taking extra index</span>
+
+<span class="n">brics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./data/brics.csv'</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">brics</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>country</th>
+<th>capital</th>
+<th>area</th>
+<th>population</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>BR</th>
+<td>Brazil</td>
+<td>Brasilia</td>
+<td>8.516</td>
+<td>200.40</td>
+</tr>
+<tr>
+<th>RU</th>
+<td>Russia</td>
+<td>Moscow</td>
+<td>17.100</td>
+<td>143.50</td>
+</tr>
+<tr>
+<th>IN</th>
+<td>India</td>
+<td>New Delhi</td>
+<td>3.286</td>
+<td>1252.00</td>
+</tr>
+<tr>
+<th>CH</th>
+<td>China</td>
+<td>Beijing</td>
+<td>9.597</td>
+<td>1357.00</td>
+</tr>
+<tr>
+<th>SA</th>
+<td>South Africa</td>
+<td>Pretoria</td>
+<td>1.221</td>
+<td>52.98</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="ionary-to-DataFrame-(1)">ionary to DataFrame (1)<a class="anchor-link" href="#ionary-to-DataFrame-(1)">¶</a></h3><p>Pandas is an open source library, providing high-performance, easy-to-use data structures and data analysis tools for Python. Sounds promising!</p>
+<p>The DataFrame is one of Pandas' most important data structures. It's basically a way to store tabular data where you can label the rows and the columns. One way to build a DataFrame is from a dictionary.</p>
+<p>In the exercises that follow you will be working with vehicle data from different countries. Each observation corresponds to a country and the columns give information about the number of vehicles per capita, whether people drive left or right, and so on.</p>
+<p>Three lists are defined in the script:</p>
+<pre><code>names, containing the country names for which data is available.
+dr, a list with booleans that tells whether people drive left or right in the corresponding country.
+cpc, the number of motor vehicles per 1000 people in the corresponding country.
+
+</code></pre>
+<p>Each dictionary key is a column label and each value is a list which contains the column elements.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Pre-defined lists</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'United States'</span><span class="p">,</span> <span class="s1">'Australia'</span><span class="p">,</span> <span class="s1">'Japan'</span><span class="p">,</span> <span class="s1">'India'</span><span class="p">,</span> <span class="s1">'Russia'</span><span class="p">,</span> <span class="s1">'Morocco'</span><span class="p">,</span> <span class="s1">'Egypt'</span><span class="p">]</span>
+<span class="n">dr</span> <span class="o">=</span>  <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="n">cpc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">809</span><span class="p">,</span> <span class="mi">731</span><span class="p">,</span> <span class="mi">588</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+
+<span class="c1"># Import pandas as pd</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="c1"># Create dictionary my_dict with three key:value pairs: my_dict</span>
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'country'</span><span class="p">:</span> <span class="n">names</span><span class="p">,</span> <span class="s1">'drives_right'</span><span class="p">:</span> <span class="n">dr</span><span class="p">,</span> <span class="s1">'cars_per_cap'</span><span class="p">:</span> <span class="n">cpc</span><span class="p">}</span>
+
+
+<span class="c1"># Build a DataFrame cars from my_dict: cars</span>
+<span class="n">cars</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+
+<span class="c1"># Print cars</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cars</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>         country  drives_right  cars_per_cap
+0  United States          True           809
+1      Australia         False           731
+2          Japan         False           588
+3          India         False            18
+4         Russia          True           200
+5        Morocco          True            70
+6          Egypt          True            45
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
