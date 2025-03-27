@@ -41,6 +41,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hasanshahriar32.github.io/ads/2.intermediate-python/notes/random_numbers.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hasanshahriar32.github.io/ads/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
