@@ -7708,6 +7708,376 @@ algeria -- 39.21
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># for extracting the inner items of an 2D array, we can do following</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">np_height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.73</span><span class="p">,</span> <span class="mf">1.54</span><span class="p">,</span> <span class="mf">1.66</span><span class="p">,</span> <span class="mf">1.56</span><span class="p">])</span>
+<span class="n">np_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">65.4</span><span class="p">,</span> <span class="mf">59.2</span><span class="p">,</span> <span class="mf">56.6</span><span class="p">,</span> <span class="mf">68.5</span><span class="p">])</span>
+<span class="n">meas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np_height</span><span class="p">,</span> <span class="n">np_weight</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meas</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">meas</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[[ 1.73  1.54  1.66  1.56]
+ [65.4  59.2  56.6  68.5 ]]
+1.73
+1.54
+1.66
+1.56
+65.4
+59.2
+56.6
+68.5
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a href="https://imgur.com/Ou0voyN.png"><img alt="https://imgur.com/Ou0voyN.png" src="https://imgur.com/Ou0voyN.png"/></a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Loop-over-NumPy-array">Loop over NumPy array<a class="anchor-link" href="#Loop-over-NumPy-array">¶</a></h3><p>If you're dealing with a 1D NumPy array, looping over all elements can be as simple as:</p>
+<p>for x in my_array :
+    ...</p>
+<p>If you're dealing with a 2D NumPy array, it's more complicated. A 2D array is built up of multiple 1D arrays. To explicitly iterate over all separate elements of a multi-dimensional array, you'll need this syntax:</p>
+<p>for x in np.nditer(my_array) :
+    ...</p>
+<p>Two NumPy arrays that you might recognize from the intro course are available in your Python session: np_height, a NumPy array containing the heights of Major League Baseball players, and np_baseball, a 2D NumPy array that contains both the heights (first column) and weights (second column) of those players.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import numpy as np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">np_baseball</span> <span class="o">=</span> <span class="n">meas</span>
+<span class="c1"># For loop over np_height</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np_height</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' inches'</span><span class="p">)</span>
+<span class="c1"># For loop over np_baseball</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">np_baseball</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1.73 inches
+1.54 inches
+1.66 inches
+1.56 inches
+1.73
+1.54
+1.66
+1.56
+65.4
+59.2
+56.6
+68.5
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="loop-through-pandas-DataFrame">loop through pandas DataFrame<a class="anchor-link" href="#loop-through-pandas-DataFrame">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">brics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/brics.csv"</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># brics</span>
+<span class="k">for</span> <span class="n">lab</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">brics</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">___________'</span><span class="o">+</span><span class="n">lab</span><span class="o">+</span><span class="s1">'___________'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+___________BR___________
+country         Brazil
+capital       Brasilia
+area             8.516
+population       200.4
+Name: BR, dtype: object
+
+___________RU___________
+country       Russia
+capital       Moscow
+area            17.1
+population     143.5
+Name: RU, dtype: object
+
+___________IN___________
+country           India
+capital       New Delhi
+area              3.286
+population       1252.0
+Name: IN, dtype: object
+
+___________CH___________
+country         China
+capital       Beijing
+area            9.597
+population     1357.0
+Name: CH, dtype: object
+
+___________SA___________
+country       South Africa
+capital           Pretoria
+area                 1.221
+population           52.98
+Name: SA, dtype: object
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Selective-print">Selective print<a class="anchor-link" href="#Selective-print">¶</a></h3><ul>
+<li>select only the rows that have a certain value in a certain column</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">brics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/brics.csv"</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">brics</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">lab</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">"capital"</span><span class="p">])</span>
+
+    <span class="c1"># here row['capital'] is the thing which is used to select a certain value from a row</span>
+    <span class="c1"># refer to dictionary selection method</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>BR: Brasilia
+RU: Moscow
+IN: New Delhi
+CH: Beijing
+SA: Pretoria
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Add-column">Add column<a class="anchor-link" href="#Add-column">¶</a></h3><p>Add a new column to the DataFrame</p>
+<ul>
+<li>method1: easy but not efficient</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">brics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/brics.csv"</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">brics</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()</span> <span class="p">:</span>
+    <span class="c1"># - Creating Series on every iteration</span>
+    <span class="n">brics</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">lab</span><span class="p">,</span> <span class="s2">"name_length"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"country"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">brics</span><span class="p">)</span>
+
+    <span class="c1"># this method is not efficient as u can see, it is iteration the dataframe rows again and again until each row have the name_length value from each iteration</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>         country    capital    area  population  name_length
+BR        Brazil   Brasilia   8.516      200.40          6.0
+RU        Russia     Moscow  17.100      143.50          NaN
+IN         India  New Delhi   3.286     1252.00          NaN
+CH         China    Beijing   9.597     1357.00          NaN
+SA  South Africa   Pretoria   1.221       52.98          NaN
+         country    capital    area  population  name_length
+BR        Brazil   Brasilia   8.516      200.40          6.0
+RU        Russia     Moscow  17.100      143.50          6.0
+IN         India  New Delhi   3.286     1252.00          NaN
+CH         China    Beijing   9.597     1357.00          NaN
+SA  South Africa   Pretoria   1.221       52.98          NaN
+         country    capital    area  population  name_length
+BR        Brazil   Brasilia   8.516      200.40          6.0
+RU        Russia     Moscow  17.100      143.50          6.0
+IN         India  New Delhi   3.286     1252.00          5.0
+CH         China    Beijing   9.597     1357.00          NaN
+SA  South Africa   Pretoria   1.221       52.98          NaN
+         country    capital    area  population  name_length
+BR        Brazil   Brasilia   8.516      200.40          6.0
+RU        Russia     Moscow  17.100      143.50          6.0
+IN         India  New Delhi   3.286     1252.00          5.0
+CH         China    Beijing   9.597     1357.00          5.0
+SA  South Africa   Pretoria   1.221       52.98          NaN
+         country    capital    area  population  name_length
+BR        Brazil   Brasilia   8.516      200.40          6.0
+RU        Russia     Moscow  17.100      143.50          6.0
+IN         India  New Delhi   3.286     1252.00          5.0
+CH         China    Beijing   9.597     1357.00          5.0
+SA  South Africa   Pretoria   1.221       52.98         12.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>method2: efficient but bit complex</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">brics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/brics.csv"</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">brics</span><span class="p">[</span><span class="s2">"name_length"</span><span class="p">]</span> <span class="o">=</span> <span class="n">brics</span><span class="p">[</span><span class="s2">"country"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">brics</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>         country    capital    area  population  name_length
+BR        Brazil   Brasilia   8.516      200.40            6
+RU        Russia     Moscow  17.100      143.50            6
+IN         India  New Delhi   3.286     1252.00            5
+CH         China    Beijing   9.597     1357.00            5
+SA  South Africa   Pretoria   1.221       52.98           12
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </main>
 </body>
