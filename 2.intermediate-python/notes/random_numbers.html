@@ -7537,6 +7537,325 @@ rand(): if you don't specify any arguments, it generates a random float between 
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Roll the dice</p>
+<p>In the previous exercise, you used rand(), that generates a random float between 0 and 1.</p>
+<p>As Hugo explained in the video you can just as well use randint(), also a function of the random package, to generate integers randomly. The following call generates the integer 4, 5, 6 or 7 randomly. 8 is not included.</p>
+<p>import numpy as np
+np.random.randint(4, 8)</p>
+<p>NumPy has already been imported as np and a seed has been set. Can you roll some dice?</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import numpy and set seed</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1"># Use randint() to simulate a dice</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="c1"># Use randint() again</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>6
+3
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="step1:-Determine-your-next-move">step1: Determine your next move<a class="anchor-link" href="#step1:-Determine-your-next-move">¶</a></h3><p>In the Empire State Building bet, your next move depends on the number you get after throwing the dice. We can perfectly code this with an if-elif-else construct!</p>
+<p>The sample code assumes that you're currently at step 50. Can you fill in the missing pieces to finish the script? numpy is already imported as np and the seed has been set to 123, so you don't have to worry about that anymore.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># NumPy is imported, seed is set</span>
+
+<span class="c1"># Starting step</span>
+<span class="n">step</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1"># Roll the dice</span>
+<span class="n">dice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># Finish the control construct</span>
+<span class="k">if</span> <span class="n">dice</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="p">:</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="k">elif</span> <span class="n">dice</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="p">:</span>
+    <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># Print out dice and step</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dice</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>5 51
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="step-2:-The-next-step">step 2: The next step<a class="anchor-link" href="#step-2:-The-next-step">¶</a></h3><p>Before, you have already written Python code that determines the next step based on the previous step. Now it's time to put this code inside a for loop so that we can simulate a random walk.</p>
+<p>numpy has been imported as np.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># NumPy is imported, seed is set</span>
+
+<span class="c1"># Initialize random_walk</span>
+<span class="n">random_walk</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Complete the ___</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="p">:</span>
+    <span class="c1"># Set step: last element in random_walk</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">random_walk</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+    <span class="c1"># Roll the dice</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+
+    <span class="c1"># Determine next step</span>
+    <span class="k">if</span> <span class="n">dice</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">dice</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+
+    <span class="c1"># append next_step to random_walk</span>
+    <span class="n">random_walk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+
+<span class="c1"># Print random_walk</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random_walk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[0, 1, 0, 1, 2, 3, 2, 1, 0, -1, -2, -3, -4, -5, -4, 1, 0, -1, 0, -1, 0, 1, 2, 3, 4, 3, 4, 3, 4, 5, 6, 7, 6, 10, 11, 10, 11, 10, 11, 12, 13, 14, 15, 16, 17, 20, 21, 22, 23, 28, 29, 33, 34, 33, 34, 35, 34, 35, 36, 38, 39, 40, 39, 38, 39, 40, 39, 38, 39, 40, 42, 41, 40, 41, 40, 41, 42, 43, 45, 44, 45, 46, 47, 48, 49, 48, 47, 48, 47, 48, 49, 48, 51, 52, 53, 54, 53, 54, 55, 59, 58]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>A typical way to solve problems like this is by using max(). If you pass max() two arguments, the biggest one gets returned. For example, to make sure that a variable x never goes below 10 when you decrease it, you can use:</p>
+<div class="highlight"><pre><span></span><span class="n">step</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Let's visualize this random walk! Remember how you could use matplotlib to build a line plot?</p>
+<p>import matplotlib.pyplot as plt
+plt.plot(x, y)
+plt.show()</p>
+<p>The first list you pass is mapped onto the x axis and the second list is mapped onto the y axis.</p>
+<p>If you pass only one argument, Python will know what to do and will use the index of the list to map onto the x axis, and the values in the list onto the y axis.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># NumPy is imported, seed is set</span>
+
+<span class="c1"># Initialization</span>
+<span class="n">random_walk</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">random_walk</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dice</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dice</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+
+    <span class="n">random_walk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+
+<span class="c1"># Import matplotlib.pyplot as plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Plot random_walk</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">random_walk</span><span class="p">)</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
+<img alt="No description has been provided for this image" class="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAh8AAAGdCAYAAACyzRGfAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjguNCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8fJSN1AAAACXBIWXMAAA9hAAAPYQGoP6dpAABMeElEQVR4nO3deVxTV94/8E9CSFgTdgIKioriXkW2ajdl6thl2up0UdwRu9BF/c106jPT5ZlnOnamz9N2Ol1FRKuirTO202W006K1GwTEFRfEFRQSNklYE0ju7w80lboRSHJD+Lxfr7xecu/h5stpJR/PPedciSAIAoiIiIicRCp2AURERNS/MHwQERGRUzF8EBERkVMxfBAREZFTMXwQERGRUzF8EBERkVMxfBAREZFTMXwQERGRU8nELuDnLBYLKisr4e/vD4lEInY5RERE1A2CIKCxsRGRkZGQSq8/tuFy4aOyshJRUVFil0FEREQ9UFFRgYEDB163jcuFD39/fwCdxSuVSpGrISIiou4wGAyIioqyfo5fj8uFj0u3WpRKJcMHERFRH9OdKROccEpEREROxfBBRERETsXwQURERE7F8EFEREROxfBBRERETsXwQURERE7F8EFEREROxfBBRERETsXwQURERE7F8EFEREROxfBBRERETsXwQURERE7F8EFEROSmDlfq8d7uk2gxdYhdShcu91RbIiIi6r12swWPbSxGRX0rvj1eg7ULE+Dl6SF2WQA48kFEROSW/rW/EhX1rQCAH0/WIeODPWhrN4tcVSeGDyIiIjdjtgh4e9cJAMB9N0XCR+6B78pq8fjGYhg7xA8gDB9ERERu5vODlThd24xAH0/8+YGxyF6QAC9PKXaV1iBz0z6YOiyi1sfwQURE5EYsFgF/39k56pE+JQa+ChlShgZjzfwEKGRSfH1Uh6c370O7WbwAwvBBRETkRraXaHGiuglKLxnm3zzYenxKbAjenxcPuYcUlfpWtIo4/4OrXYiIiNxE56hHGQBg0eQYKL08u5y/fUQY1i9OxKhI5RXnnInhg4iIyE18fVSHY9pG+ClkWDw55qptUoYGO7mqK/G2CxERkRsQBAFvXhz1WHDzIKh8xBvZuBGGDyIiIjfwTWkNSs4b4CP3QPqUIWKXc102hY/BgwdDIpFc8crMzAQAtLW1ITMzE8HBwfDz88OsWbOg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"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Simulate-multiple-walks">Simulate multiple walks<a class="anchor-link" href="#Simulate-multiple-walks">¶</a></h3><p>A single random walk is one thing, but that doesn't tell you if you have a good chance at winning the bet.</p>
+<p>To get an idea about how big your chances are of reaching 60 steps, you can repeatedly simulate the random walk and collect the results. That's exactly what you'll do in this exercise.</p>
+<p>The sample code already sets you off in the right direction. Another for loop is wrapped around the code you already wrote. It's up to you to add some bits and pieces to make sure all of the results are recorded correctly.</p>
+<p>Note: Don't change anything about the initialization of all_walks that is given. Setting any number inside the list will cause the exercise to crash!</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># NumPy is imported; seed is set</span>
+
+<span class="c1"># Initialize all_walks (don't change this line)</span>
+<span class="n">all_walks</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Simulate random walk five times</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">:</span>
+
+    <span class="c1"># Code from before</span>
+    <span class="n">random_walk</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">random_walk</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">dice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">dice</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dice</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+        <span class="n">random_walk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+
+    <span class="c1"># Append random_walk to all_walks</span>
+    <span class="n">all_walks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random_walk</span><span class="p">)</span>
+
+<span class="c1"># Print all_walks</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_walks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[[0, 1, 2, 5, 4, 5, 4, 5, 6, 7, 6, 7, 6, 7, 8, 10, 9, 8, 9, 10, 9, 11, 12, 13, 14, 15, 16, 17, 16, 17, 18, 23, 24, 23, 22, 21, 20, 21, 22, 23, 28, 29, 28, 29, 30, 31, 32, 33, 34, 33, 32, 33, 32, 38, 37, 38, 37, 38, 37, 38, 42, 46, 48, 50, 49, 50, 52, 51, 57, 58, 60, 61, 60, 61, 62, 63, 62, 63, 64, 65, 67, 66, 65, 66, 72, 77, 76, 75, 79, 80, 81, 82, 84, 83, 84, 83, 84, 83, 82, 88, 87], [0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 8, 7, 6, 7, 6, 7, 6, 7, 8, 12, 13, 12, 18, 17, 16, 17, 16, 15, 16, 15, 19, 18, 19, 18, 19, 18, 19, 21, 20, 19, 18, 19, 18, 23, 24, 25, 24, 23, 24, 23, 24, 23, 28, 29, 28, 27, 26, 25, 26, 27, 31, 37, 38, 39, 40, 41, 40, 41, 43, 44, 45, 46, 45, 44, 45, 44, 45, 46, 47, 46, 47, 48, 49, 48, 47, 48, 49, 54, 55, 56, 61, 60, 61, 60, 61, 62, 63, 64, 63, 69, 68], [0, 1, 0, 0, 1, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 5, 6, 7, 8, 9, 10, 9, 10, 11, 10, 11, 12, 15, 14, 15, 14, 15, 18, 19, 20, 21, 20, 19, 22, 23, 24, 25, 24, 23, 24, 27, 28, 33, 34, 33, 34, 33, 34, 33, 39, 38, 37, 38, 40, 39, 38, 37, 38, 39, 40, 41, 45, 50, 51, 52, 53, 56, 57, 58, 59, 60, 61, 62, 61, 60, 61, 62, 61, 67, 66, 67, 68, 67, 66, 67, 66, 65, 71, 70, 69, 70, 71, 70, 69, 68, 67], [0, 1, 7, 8, 11, 12, 18, 19, 20, 26, 25, 31, 30, 31, 32, 33, 32, 38, 39, 38, 39, 38, 39, 38, 39, 38, 39, 43, 44, 46, 45, 46, 45, 44, 45, 44, 45, 44, 48, 52, 51, 50, 49, 50, 51, 55, 56, 57, 61, 60, 59, 58, 59, 60, 62, 61, 60, 61, 62, 64, 67, 72, 73, 72, 73, 74, 75, 76, 77, 76, 77, 78, 84, 83, 88, 87, 91, 90, 94, 93, 96, 97, 96, 97, 103, 102, 101, 100, 104, 103, 102, 103, 104, 103, 104, 105, 106, 107, 106, 105, 104], [0, 1, 0, 0, 4, 5, 7, 11, 17, 16, 15, 16, 17, 18, 17, 18, 17, 18, 19, 18, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 33, 32, 35, 36, 35, 34, 35, 36, 37, 36, 35, 34, 33, 34, 35, 36, 37, 38, 39, 40, 39, 40, 41, 43, 42, 43, 44, 47, 49, 50, 49, 48, 47, 46, 45, 46, 45, 46, 48, 49, 50, 49, 50, 49, 48, 49, 48, 47, 46, 47, 46, 45, 46, 47, 48, 50, 51, 52, 51, 50, 51, 57, 56, 57, 58, 63, 62, 63, 62, 63]]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
