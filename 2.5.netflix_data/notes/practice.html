@@ -7526,6 +7526,130 @@ a.anchor-link {
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Importing pandas and matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Read in the Netflix CSV as a DataFrame</span>
+<span class="n">netflix_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"./data/netflix_data.csv"</span><span class="p">)</span>
+
+<span class="c1"># Subset the DataFrame for type "Movie"</span>
+<span class="n">netflix_subset</span> <span class="o">=</span> <span class="n">netflix_df</span><span class="p">[</span><span class="n">netflix_df</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Movie"</span><span class="p">]</span>
+
+<span class="c1"># Filter the to keep only movies released in the 1990s</span>
+<span class="c1"># Start by filtering out movies that were released before 1990</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">netflix_subset</span><span class="p">[(</span><span class="n">netflix_subset</span><span class="p">[</span><span class="s2">"release_year"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1990</span><span class="p">)]</span>
+
+<span class="c1"># And then do the same to filter out movies released on or after 2000</span>
+<span class="n">netflix_df</span>  <span class="o">=</span> <span class="n">subset</span><span class="p">[(</span><span class="n">subset</span><span class="p">[</span><span class="s2">"release_year"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">nf_movie_duration</span> <span class="o">=</span> <span class="n">netflix_df</span><span class="p">[</span><span class="s1">'duration'</span><span class="p">]</span>
+<span class="n">nf_movie_duration</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nf_movie_duration</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">duration</span> <span class="o">=</span> <span class="n">nf_movie_duration</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>94
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>int</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
+<img alt="No description has been provided for this image" class="" src="data:image/png;base64,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7amysjI98MADKaWU/ud//idFRFq5cmVhm1/84hepoqIivfTSS5029lI78Fy059lnn00RkV588cXCulGjRqXvfOc75R1cBu2dj2nTpqUpU6a86X168tyYMmVK+tCHPlS0rrvOjQOvpx25hvz3f/936tWrV2pqaipss2DBglRVVZVaW1s7fOwu98rIgZqbmyMiYvDgwUXr77vvvhg6dGiMGTMm6uvrY9eu7vsR8uvXr4+ampo49dRTY+rUqbF58+aIiFi9enXs3bs3Jk6cWNj2jDPOiJEjR8by5ctzDbdT7NmzJ370ox/FZz/72aIPXOxJ8+Jvbdy4MZqamormwsCBA2P8+PGFubB8+fIYNGhQnH/++YVtJk6cGL169YoVK1Z0+pg7U3Nzc1RUVBz0uVjz5s2LIUOGxDnnnBO33377Eb/03JUsWbIkhg0bFu9617viS1/6UrzyyiuF23rq3Ni6dWs8+uij8bnPfe6g27rj3DjwetqRa8jy5ctj7NixRf+p6aWXXhotLS3x+9//vsPHzv6pvW9FW1tb3HjjjXHhhRfGmDFjCus/+clPxqhRo6KmpiZ++9vfxsyZM2PdunXx85//PONoy2P8+PFx7733xrve9a7YsmVLzJ07N/7+7/8+nn/++Whqaoq+ffse9AQ7fPjwaGpqyjPgTvLQQw/F9u3b4zOf+UxhXU+aFwfa//0+8H9B/tu50NTUFMOGDSu6vU+fPjF48OBuPV92794dM2fOjKuvvrroA8Cuv/76OPfcc2Pw4MGxbNmyqK+vjy1btsQdd9yRcbTlcdlll8XHPvaxqK2tjRdeeCG+/vWvx6RJk2L58uXRu3fvHjs3Fi5cGAMGDDjoV9vdcW60dz3tyDWkqamp3eeV/bd1VJeOkbq6unj++eeL3iMREUW/xxw7dmyMGDEiLr744njhhRfitNNO6+xhltWkSZMK/z777LNj/PjxMWrUqPjpT38a/fv3zziyvH7wgx/EpEmTij7KuifNCzpm79698Q//8A+RUooFCxYU3TZjxozCv88+++zo27dvfOELX4iGhoZu99+DX3XVVYV/jx07Ns4+++w47bTTYsmSJXHxxRdnHFled999d0ydOjX69etXtL47zo03u552li77a5rrrrsuHnnkkXjyySfj5JNPPuS248ePj4iIDRs2dMbQsho0aFC8853vjA0bNkR1dXXs2bMntm/fXrTN1q1bo7q6Os8AO8GLL74Yjz/+eHz+858/5HY9aV7s/34f+C74v50L1dXVsW3btqLbX3/99Xj11Ve75XzZHyIvvvhiLFq06LAfET9+/Ph4/fXXY9OmTZ0zwIxOPfXUGDp0aOFno6fNjYiIX/3qV7Fu3brDPo9EdP258WbX045cQ6qrq9t9Xtl/W0d1uRhJKcV1110XDz74YDzxxBNRW1t72PusXbs2IiJGjBhR5tHl99prr8ULL7wQI0aMiPPOOy+OO+64WLx4ceH2devWxebNm2PChAkZR1le99xzTwwbNiwmT558yO160ryora2N6urqornQ0tISK1asKMyFCRMmxPbt22P16tWFbZ544oloa2srhFt3sT9E1q9fH48//ngMGTLksPdZu3Zt9OrV66BfV3RHf/rTn+KVV14p/Gz0pLmx3w9+8IM477zzYty4cYfdtqvOjcNdTztyDZkwYUL87ne/K4rV/XF/5plnHtFgupQvfelLaeDAgWnJkiVpy5YthWXXrl0ppZQ2bNiQvvGNb6RVq1aljRs3pocffjideuqp6aKLLso88vL42te+lpYsWZI2btyYfv3rX6eJEyemoUOHpm3btqWUUvriF7+YRo4cmZ544om0atWqNGHChDRhwoTMoy6fffv2pZEjR6aZM2cWre8J82LHjh3pueeeS88991yKiHTHHXek5557rvAXIvPmzUuDBg1KDz/8cPrtb3+bpkyZkmpra9Nf//rXwj4uu+yydM4556QVK1akp59+Op1++unp6quvzvWQjtqhzsWePXvSRz7ykXTyySentWvXFj2P7H/3/7Jly9J3vvOdtHbt2vTCCy+kH/3oR+mkk05Kn/70pzM/sqNzqPOxY8eO9I//+I9p+fLlaePGjenxxx9P5557bjr99NPT7t27C/voCXNjv+bm5nT88cenBQsWHHT/7jQ3Dnc9Tenw15DXX389jRkzJl1yySVp7dq16bHHHksnnXRSqq+vP6KxdLkYiYh2l3vuuSellNLmzZvTRRddlAYPHpwqKyvTO97xjnTTTTel5ubmvAMvkyuvvDKNGDEi9e3bN7397W9PV155ZdqwYUPh9r/+9a/py1/+cjrxxBPT8ccfnz760Y+mLVu2ZBxxef3yl79MEZHWrVtXtL4nzIsnn3yy3Z+NadOmpZT+7897Z8+enYYPH54qKyvTxRdffNB5euWVV9LVV1+d3va2t6Wqqqo0ffr0tGPHjgyP5q051LnYuHHjmz6PPPnkkymllFavXp3Gjx+fBg4cmPr165fe/e53p1tvvbXo4tyVHOp87Nq1K11yySXppJNOSscdd1waNWpUuuaaa4r+VDOlnjE39vve976X+vfvn7Zv337Q/bvT3Djc9TSljl1DNm3alCZNmpT69++fhg4dmr72ta+lvXv3HtFYKv7/gAAAsuhy7xkBALoXMQIAZCVGAICsxAgAkJUYAQCyEiMAQFZiBADISowAAFmJEQAgKzECAGQlRgCArMQIAJDV/wNzh0NRa5tvWwAAAABJRU5ErkJggg=="/>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">action_df</span> <span class="o">=</span> <span class="n">netflix_df</span><span class="p">[</span><span class="n">netflix_df</span><span class="p">[</span><span class="s1">'genre'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Action'</span><span class="p">]</span>
+<span class="n">action_movie_df</span> <span class="o">=</span> <span class="n">action_df</span><span class="p">[</span><span class="n">action_df</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'Movie'</span><span class="p">]</span>
+<span class="n">action_movie_duration</span> <span class="o">=</span> <span class="n">action_movie_df</span><span class="p">[</span><span class="s1">'duration'</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">short_movie_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">action_movie_duration</span> <span class="o">&lt;</span> <span class="mi">90</span><span class="p">))</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">short_movie_count</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">short_movie_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>7
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </main>
 </body>
