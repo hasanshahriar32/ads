@@ -16,6 +16,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hasanshahriar32.github.io/ads/2.5.netflix_data/cheatsheet/cheatsheet.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hasanshahriar32.github.io/ads/2.5.netflix_data/notes/practice.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hasanshahriar32.github.io/ads/2.intermediate-python/cheatsheet/cheatsheet.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
