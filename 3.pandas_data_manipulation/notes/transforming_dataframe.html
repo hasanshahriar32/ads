@@ -7443,7 +7443,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Transforming-dataframe">Transforming dataframe<a class="anchor-link" href="#Transforming-dataframe">¶</a></h1>
+<h1 id="Transforming-dataframe">Transforming dataframe<a class="anchor-link" href="#Transforming-dataframe">¶</a></h1><p>also known as updating or feature engineering</p>
 </div>
 </div>
 </div>
@@ -7750,6 +7750,126 @@ multiple columns 	df.sort_values(["breed", "weight_kg"])</p>
 <a href="https://imgur.com/MHhGUQF.png"><img alt="https://imgur.com/MHhGUQF.png" src="https://imgur.com/MHhGUQF.png"/></a></p>
 <p><a href="https://imgur.com/dJFPaHw.png"><img alt="https://imgur.com/dJFPaHw.png" src="https://imgur.com/dJFPaHw.png"/></a></p>
 <p><a href="https://imgur.com/6Luu9Qz.png"><img alt="https://imgur.com/6Luu9Qz.png" src="https://imgur.com/6Luu9Qz.png"/></a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Adding-new-columns">Adding new columns<a class="anchor-link" href="#Adding-new-columns">¶</a></h2><p>You aren't stuck with just the data you are given. Instead, you can add new columns to a DataFrame. This has many names, such as transforming, mutating, and feature engineering.</p>
+<p>You can create new columns from scratch, but it is also common to derive them from other columns, for example, by adding columns together or by changing their units.</p>
+<p>homelessness is a DataFrame containing estimates of homelessness in each U.S. state in 2018. The individual column is the number of homeless individuals not part of a family with children. The family_members column is the number of homeless individuals part of a family with children. The state_pop column is the state's total population.</p>
+<p>homelessness is available and pandas is loaded as pd.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Add total col as sum of individuals and family_members</span>
+<span class="n">homelessness</span><span class="p">[</span><span class="s1">'total'</span><span class="p">]</span> <span class="o">=</span> <span class="n">homelessness</span><span class="p">[</span><span class="s1">'individuals'</span><span class="p">]</span> <span class="o">+</span> <span class="n">homelessness</span><span class="p">[</span><span class="s1">'family_members'</span><span class="p">]</span>
+ 
+<span class="c1"># Add p_homeless col as proportion of total homeless population to the state population</span>
+<span class="n">homelessness</span><span class="p">[</span><span class="s1">'p_homeless'</span><span class="p">]</span> <span class="o">=</span> <span class="n">homelessness</span><span class="p">[</span><span class="s1">'total'</span><span class="p">]</span> <span class="o">/</span> <span class="n">homelessness</span><span class="p">[</span><span class="s1">'state_pop'</span><span class="p">]</span>
+
+<span class="c1"># See the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">homelessness</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>   Unnamed: 0              region       state  individuals  family_members  \
+0           0  East South Central     Alabama       2570.0           864.0   
+1           1             Pacific      Alaska       1434.0           582.0   
+2           2            Mountain     Arizona       7259.0          2606.0   
+3           3  West South Central    Arkansas       2280.0           432.0   
+4           4             Pacific  California     109008.0         20964.0   
+
+   state_pop     total  p_homeless  
+0    4887681    3434.0    0.000703  
+1     735139    2016.0    0.002742  
+2    7158024    9865.0    0.001378  
+3    3009733    2712.0    0.000901  
+4   39461588  129972.0    0.003294  
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Combo-attack!">Combo-attack!<a class="anchor-link" href="#Combo-attack!">¶</a></h2><p>You've seen the four most common types of data manipulation: sorting rows, subsetting columns, subsetting rows, and adding new columns. In a real-life data analysis, you can mix and match these four manipulations to answer a multitude of questions.</p>
+<p>In this exercise, you'll answer the question, "Which state has the highest number of homeless individuals per 10,000 people in the state?" Combine your new pandas skills to find out.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create indiv_per_10k col as homeless individuals per 10k state pop</span>
+<span class="n">homelessness</span><span class="p">[</span><span class="s2">"indiv_per_10k"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">homelessness</span><span class="p">[</span><span class="s1">'individuals'</span><span class="p">]</span> <span class="o">/</span> <span class="n">homelessness</span><span class="p">[</span><span class="s1">'state_pop'</span><span class="p">]</span>
+
+<span class="c1"># Subset rows for indiv_per_10k greater than 20</span>
+<span class="n">high_homelessness</span> <span class="o">=</span> <span class="n">homelessness</span><span class="p">[</span><span class="n">homelessness</span><span class="p">[</span><span class="s1">'indiv_per_10k'</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">]</span>
+
+<span class="c1"># # Sort high_homelessness by descending indiv_per_10k</span>
+<span class="n">high_homelessness_srt</span> <span class="o">=</span> <span class="n">high_homelessness</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'indiv_per_10k'</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># # From high_homelessness_srt, select the state and indiv_per_10k cols</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">high_homelessness_srt</span><span class="p">[[</span><span class="s1">'state'</span><span class="p">,</span><span class="s1">'indiv_per_10k'</span><span class="p">]]</span>
+
+<span class="c1"># # See the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1"># high_homelessness_srt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>                   state  indiv_per_10k
+8   District of Columbia      53.738381
+11                Hawaii      29.079406
+4             California      27.623825
+37                Oregon      26.636307
+28                Nevada      23.314189
+47            Washington      21.829195
+32              New York      20.392363
+</pre>
+</div>
 </div>
 </div>
 </div>
