@@ -7553,16 +7553,175 @@ a.anchor-link {
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Sorting-and-subsetting">Sorting and subsetting<a class="anchor-link" href="#Sorting-and-subsetting">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Sorting rows
+<a href="https://imgur.com/PJrIwyz.png"><img alt="https://imgur.com/PJrIwyz.png" src="https://imgur.com/PJrIwyz.png"/></a></p>
+<p>Finding interesting bits of data in a DataFrame is often easier if you change the order of the rows. You can sort the rows by passing a column name to .sort_values().</p>
+<p>In cases where rows have the same value (this is common if you sort on a categorical variable), you may wish to break the ties by sorting on another column. You can sort on multiple columns in this way by passing a list of column names.
+Sort on … 	Syntax
+one column 	df.sort_values("breed")
+multiple columns 	df.sort_values(["breed", "weight_kg"])</p>
+<p>By combining .sort_values() with .head(), you can answer questions in the form, "What are the top cases where…?".</p>
+<p>homelessness is available and pandas is loaded as pd.</p>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">homelessness</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./data/homelessness.csv'</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Sort homelessness by individuals</span>
+<span class="n">homelessness_ind</span> <span class="o">=</span> <span class="n">homelessness</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'individuals'</span><span class="p">)</span>
+
+<span class="c1"># Print the top few rows</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">homelessness_ind</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>    Unnamed: 0              region         state  individuals  family_members  \
+50          50            Mountain       Wyoming        434.0           205.0   
+34          34  West North Central  North Dakota        467.0            75.0   
+7            7      South Atlantic      Delaware        708.0           374.0   
+39          39         New England  Rhode Island        747.0           354.0   
+45          45         New England       Vermont        780.0           511.0   
+
+    state_pop  
+50     577601  
+34     758080  
+7      965479  
+39    1058287  
+45     624358  
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Sort homelessness by descending family members</span>
+<span class="n">homelessness_fam</span> <span class="o">=</span> <span class="n">homelessness</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'family_members'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">homelessness_fam</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>    Unnamed: 0              region          state  individuals  \
+32          32        Mid-Atlantic       New York      39827.0   
+4            4             Pacific     California     109008.0   
+21          21         New England  Massachusetts       6811.0   
+9            9      South Atlantic        Florida      21443.0   
+43          43  West South Central          Texas      19199.0   
+
+    family_members  state_pop  
+32         52070.0   19530351  
+4          20964.0   39461588  
+21         13257.0    6882635  
+9           9587.0   21244317  
+43          6111.0   28628666  
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Sort homelessness by region, then descending family members</span>
+<span class="n">homelessness_reg_fam</span> <span class="o">=</span> <span class="n">homelessness</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'region'</span><span class="p">,</span> <span class="s1">'family_members'</span><span class="p">],</span><span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+
+<span class="c1"># Print the top few rows</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">homelessness_reg_fam</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>    Unnamed: 0              region      state  individuals  family_members  \
+13          13  East North Central   Illinois       6752.0          3891.0   
+35          35  East North Central       Ohio       6929.0          3320.0   
+22          22  East North Central   Michigan       5209.0          3142.0   
+49          49  East North Central  Wisconsin       2740.0          2167.0   
+14          14  East North Central    Indiana       3776.0          1482.0   
+
+    state_pop  
+13   12723071  
+35   11676341  
+22    9984072  
+49    5807406  
+14    6695497  
+</pre>
 </div>
 </div>
 </div>
