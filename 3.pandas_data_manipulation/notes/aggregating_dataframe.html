@@ -7519,6 +7519,57 @@ a.anchor-link {
 </ul>
 <div class="highlight"><pre><span></span><span class="n">dogs</span><span class="p">[</span><span class="s2">"date_of_birth"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
+<p>(c). the .agg() method</p>
+<ul>
+<li>.agg() method allows you to apply multiple functions to a DataFrame or Series.</li>
+<li>You can pass a list of functions to .agg() to apply them to the DataFrame or Series.</li>
+</ul>
+<p>example 1 : percentile determination of a certain column</p>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pct30</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+<span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">dogs</span><span class="p">[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pct30</span><span class="p">)</span> <span class="c1">#22.599999999999998</span>
+</pre></div>
+<p>example 2: Summaries on multiple columns</p>
+<div class="highlight"><pre><span></span><span class="n">dogs</span><span class="p">[[</span><span class="s2">"weight_kg"</span><span class="p">,</span> <span class="s2">"height_cm"</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pct30</span><span class="p">)</span>
+</pre></div>
+<p>output 2:</p>
+<pre><code>weight_kg 22.6
+height_cm 45.4
+dtype: float64
+</code></pre>
+<p>example 3: multiple summaries</p>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pct40</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+<span class="k">return</span> <span class="n">column</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">dogs</span><span class="p">[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="n">pct30</span><span class="p">,</span> <span class="n">pct40</span><span class="p">])</span>
+</pre></div>
+<p>output 3:</p>
+<pre><code>pct30 22.6
+pct40 24.0
+Name: weight_kg, dtype: float64
+</code></pre>
+<p>(d). commutative 
+<a href="https://imgur.com/SIuU5kQ.png"><img alt="https://imgur.com/SIuU5kQ.png" src="https://imgur.com/SIuU5kQ.png"/></a></p>
+<p>(e). Commutative statistics</p>
+<ul>
+<li>.cummax()</li>
+<li>.cummin()</li>
+<li>.cumprod()</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>
