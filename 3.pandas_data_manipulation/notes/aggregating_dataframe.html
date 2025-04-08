@@ -7705,6 +7705,71 @@ None
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Cumulative statistics
+Cumulative statistics can also be helpful in tracking summary statistics over time. In this exercise, you'll calculate the cumulative sum and cumulative max of a department's weekly sales, which will allow you to identify what the total sales were so far as well as what the highest weekly sales were so far.</p>
+<p>A DataFrame called sales_1_1 has been created for you, which contains the sales data for department 1 of store 1. pandas is loaded as pd.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sales_1_1</span> <span class="o">=</span> <span class="n">sales</span>
+<span class="c1"># Sort sales_1_1 by date</span>
+<span class="n">sales_1_1</span> <span class="o">=</span> <span class="n">sales_1_1</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Get the cumulative sum of weekly_sales, add as cum_weekly_sales col</span>
+<span class="n">sales_1_1</span><span class="p">[</span><span class="s1">'cum_weekly_sales'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sales_1_1</span><span class="p">[</span><span class="s1">'weekly_sales'</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">sales_1_1</span>
+
+
+<span class="c1"># # Get the cumulative max of weekly_sales, add as cum_max_sales col</span>
+<span class="n">sales_1_1</span><span class="p">[</span><span class="s1">'cum_max_sales'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sales_1_1</span><span class="p">[</span><span class="s1">'weekly_sales'</span><span class="p">]</span><span class="o">.</span><span class="n">cummax</span><span class="p">()</span>
+
+<span class="c1"># # See the columns you calculated</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales_1_1</span><span class="p">[[</span><span class="s2">"date"</span><span class="p">,</span> <span class="s2">"weekly_sales"</span><span class="p">,</span> <span class="s2">"cum_weekly_sales"</span><span class="p">,</span> <span class="s2">"cum_max_sales"</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>             date  weekly_sales  cum_weekly_sales  cum_max_sales
+0      2010-02-05      24924.50      2.492450e+04       24924.50
+6437   2010-02-05      38597.52      6.352202e+04       38597.52
+1249   2010-02-05       3840.21      6.736223e+04       38597.52
+6449   2010-02-05      17590.59      8.495282e+04       38597.52
+6461   2010-02-05       4929.87      8.988269e+04       38597.52
+...           ...           ...               ...            ...
+3592   2012-10-05        440.00      2.568932e+08      293966.05
+8108   2012-10-05        660.00      2.568938e+08      293966.05
+10773  2012-10-05        915.00      2.568947e+08      293966.05
+6257   2012-10-12          3.00      2.568947e+08      293966.05
+3384   2012-10-26        -21.63      2.568947e+08      293966.05
+
+[10774 rows x 4 columns]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
