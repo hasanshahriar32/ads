@@ -7725,7 +7725,7 @@ Cumulative statistics can also be helpful in tracking summary statistics over ti
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">sales_1_1</span> <span class="o">=</span> <span class="n">sales</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sales_1_1</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="c1"># Sort sales_1_1 by date</span>
 <span class="n">sales_1_1</span> <span class="o">=</span> <span class="n">sales_1_1</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># Get the cumulative sum of weekly_sales, add as cum_weekly_sales col</span>
@@ -7750,22 +7750,48 @@ Cumulative statistics can also be helpful in tracking summary statistics over ti
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>             date  weekly_sales  cum_weekly_sales  cum_max_sales
-0      2010-02-05      24924.50      2.492450e+04       24924.50
-6437   2010-02-05      38597.52      6.352202e+04       38597.52
-1249   2010-02-05       3840.21      6.736223e+04       38597.52
-6449   2010-02-05      17590.59      8.495282e+04       38597.52
-6461   2010-02-05       4929.87      8.988269e+04       38597.52
-...           ...           ...               ...            ...
-3592   2012-10-05        440.00      2.568932e+08      293966.05
-8108   2012-10-05        660.00      2.568938e+08      293966.05
-10773  2012-10-05        915.00      2.568947e+08      293966.05
-6257   2012-10-12          3.00      2.568947e+08      293966.05
-3384   2012-10-26        -21.63      2.568947e+08      293966.05
-
-[10774 rows x 4 columns]
+<pre>         date  weekly_sales  cum_weekly_sales  cum_max_sales
+0  2010-02-05      24924.50          24924.50       24924.50
+1  2010-03-05      21827.90          46752.40       24924.50
+2  2010-04-02      57258.43         104010.83       57258.43
+3  2010-05-07      17413.94         121424.77       57258.43
+4  2010-06-04      17558.09         138982.86       57258.43
 </pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="II.-Counting">II. Counting<a class="anchor-link" href="#II.-Counting">¶</a></h2><h3 id="(Theory)">(Theory)<a class="anchor-link" href="#(Theory)">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol>
+<li>Dropping duplicate names</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">vet_visits</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s2">"name"</span><span class="p">)</span>
+</pre></div>
+<p><img alt="{BBF1423B-AAD6-46D4-BC39-B906F995FE8D}.png" src="./images/%7BBBF1423B-AAD6-46D4-BC39-B906F995FE8D%7D.png"/></p>
+<ol start="2">
+<li>dropping duplicate pairs</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">unique_dogs</span> <span class="o">=</span> <span class="n">vet_visits</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"breed"</span><span class="p">])</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">unique_dogs</span><span class="p">)</span>
+</pre></div>
+<p><img alt="image.png" src="./images/image.png"/></p>
 </div>
 </div>
 </div>
