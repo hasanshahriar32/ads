@@ -7804,6 +7804,203 @@ Cumulative statistics can also be helpful in tracking summary statistics over ti
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2.-(Practice)">2. (Practice)<a class="anchor-link" href="#2.-(Practice)">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol>
+<li>Dropping duplicates</li>
+</ol>
+<p>Removing duplicates is an essential skill to get accurate counts because often, you don't want to count the same thing multiple times. In this exercise, you'll create some new DataFrames using unique values from sales.</p>
+<p>sales is available and pandas is imported as pd.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'./data/sales_subset.csv'</span><span class="p">)</span>
+
+<span class="c1"># # Drop duplicate store/type combinations</span>
+
+<span class="n">store_types</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'store'</span><span class="p">,</span><span class="s1">'type'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">store_types</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># # Drop duplicate store/department combinations</span>
+<span class="n">store_depts</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'store'</span><span class="p">,</span><span class="s1">'department'</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">store_depts</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># # Subset the rows where is_holiday is True and drop duplicate dates</span>
+<span class="n">holiday_dates</span> <span class="o">=</span> <span class="n">sales</span><span class="p">[</span><span class="n">sales</span><span class="p">[</span><span class="s1">'is_holiday'</span><span class="p">]</span><span class="o">==</span><span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">'date'</span><span class="p">)</span>
+
+<span class="c1"># # Print date col of holiday_dates</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">holiday_dates</span><span class="p">[</span><span class="s1">'date'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>      Unnamed: 0  store type  department        date  weekly_sales  \
+0              0      1    A           1  2010-02-05      24924.50   
+901          901      2    A           1  2010-02-05      35034.06   
+1798        1798      4    A           1  2010-02-05      38724.42   
+2699        2699      6    A           1  2010-02-05      25619.00   
+3593        3593     10    B           1  2010-02-05      40212.84   
+
+      is_holiday  temperature_c  fuel_price_usd_per_l  unemployment  
+0          False       5.727778              0.679451         8.106  
+901        False       4.550000              0.679451         8.324  
+1798       False       6.533333              0.686319         8.623  
+2699       False       4.683333              0.679451         7.259  
+3593       False      12.411111              0.782478         9.765  
+    Unnamed: 0  store type  department        date  weekly_sales  is_holiday  \
+0            0      1    A           1  2010-02-05      24924.50       False   
+12          12      1    A           2  2010-02-05      50605.27       False   
+24          24      1    A           3  2010-02-05      13740.12       False   
+36          36      1    A           4  2010-02-05      39954.04       False   
+48          48      1    A           5  2010-02-05      32229.38       False   
+
+    temperature_c  fuel_price_usd_per_l  unemployment  
+0        5.727778              0.679451         8.106  
+12       5.727778              0.679451         8.106  
+24       5.727778              0.679451         8.106  
+36       5.727778              0.679451         8.106  
+48       5.727778              0.679451         8.106  
+498     2010-09-10
+691     2011-11-25
+2315    2010-02-12
+6735    2012-09-07
+6810    2010-12-31
+6815    2012-02-10
+6820    2011-09-09
+Name: date, dtype: object
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="2">
+<li>Counting categorical variables</li>
+</ol>
+<p>Counting is a great way to get an overview of your data and to spot curiosities that you might not notice otherwise. In this exercise, you'll count the number of each type of store and the number of each department number using the DataFrames you created in the previous exercise:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Drop duplicate store/type combinations</span>
+<span class="n">store_types</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"store"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">])</span>
+
+<span class="c1"># Drop duplicate store/department combinations</span>
+<span class="n">store_depts</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"store"</span><span class="p">,</span> <span class="s2">"department"</span><span class="p">])</span>
+</pre></div>
+<p>The store_types and store_depts DataFrames you created in the last exercise are available, and pandas is imported as pd.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Count the number of stores of each type</span>
+<span class="n">store_counts</span> <span class="o">=</span> <span class="n">store_types</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">store_counts</span><span class="p">)</span>
+
+<span class="c1"># Get the proportion of stores of each type</span>
+<span class="n">store_props</span> <span class="o">=</span> <span class="n">store_types</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">store_props</span><span class="p">)</span>
+
+<span class="c1"># Count the number of stores for each department and sort</span>
+<span class="n">dept_counts_sorted</span> <span class="o">=</span> <span class="n">store_depts</span><span class="p">[</span><span class="s1">'department'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dept_counts_sorted</span><span class="p">)</span>
+
+<span class="c1"># Get the proportion of stores in each department and sort</span>
+<span class="n">dept_props_sorted</span> <span class="o">=</span> <span class="n">store_depts</span><span class="p">[</span><span class="s1">'department'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dept_props_sorted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>type
+A    11
+B     1
+Name: count, dtype: int64
+type
+A    0.916667
+B    0.083333
+Name: proportion, dtype: float64
+department
+1     12
+55    12
+72    12
+71    12
+67    12
+      ..
+37    10
+48     8
+50     6
+39     4
+43     2
+Name: count, Length: 80, dtype: int64
+department
+1     0.012917
+55    0.012917
+72    0.012917
+71    0.012917
+67    0.012917
+        ...   
+37    0.010764
+48    0.008611
+50    0.006459
+39    0.004306
+43    0.002153
+Name: proportion, Length: 80, dtype: float64
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
