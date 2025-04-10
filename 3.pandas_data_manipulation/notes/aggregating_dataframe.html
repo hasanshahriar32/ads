@@ -8012,6 +8012,256 @@ Name: proportion, Length: 80, dtype: float64
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol>
+<li>Summaries by group</li>
+</ol>
+<p>we often want to summarize data by group. For example, we might want to know the average height of dogs by breed. To do this, we can use the following code:</p>
+<div class="highlight"><pre><span></span><span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Black"</span><span class="p">][</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+<span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Brown"</span><span class="p">][</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+<span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"White"</span><span class="p">][</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+<span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Gray"</span><span class="p">][</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+<span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Tan"</span><span class="p">][</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> 
+<span class="n">dogs</span><span class="p">[</span><span class="n">dogs</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Yellow"</span><span class="p">][</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+<p>but this is not efficient. Instead, we can use the groupby() method to group the data by color and then apply the mean() function to each group:</p>
+<div class="highlight"><pre><span></span><span class="n">dogs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"color"</span><span class="p">)[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+<p>output:</p>
+<pre><code>
+color
+
+Black     22.6
+Brown    24.0
+Gray     23.0
+Tan      23.0
+White    23.0
+Yellow   23.0
+</code></pre>
+<ol start="2">
+<li>Grouping by multiple columns/ variables</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">dogs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"breed"</span><span class="p">])[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+<p>output:</p>
+<pre><code>
+color  breed
+Black  Labrador Retriever    30.0
+       Poodle                20.0
+        Rottweiler            25.0
+        Shih Tzu              10.0
+        Yorkshire Terrier      5.0
+        Name: weight_kg, dtype: float64
+</code></pre>
+<ol start="3">
+<li>multiple aggregations / multiple grouped summaries</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">dogs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"color"</span><span class="p">)[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"mean"</span><span class="p">,</span> <span class="s2">"std"</span><span class="p">,</span> <span class="s2">"min"</span><span class="p">,</span> <span class="s2">"max"</span><span class="p">])</span>
+</pre></div>
+<p>output:</p>
+<pre><code>          mean   std   min   max
+color
+Black     22.6  2.0  20.0  25.0
+Brown    24.0  2.0  22.0  26.0
+Gray     23.0  2.0  21.0  25.0
+Tan      23.0  2.0  21.0  25.0
+White    23.0  2.0  21.0  25.0
+Yellow   23.0  2.0  21.0  25.0
+</code></pre>
+<ol start="4">
+<li>many groups, many summaries</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">dogs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"color"</span><span class="p">,</span> <span class="s2">"breed"</span><span class="p">])[</span><span class="s2">"weight_kg"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"mean"</span><span class="p">,</span> <span class="s2">"std"</span><span class="p">,</span> <span class="s2">"min"</span><span class="p">,</span> <span class="s2">"max"</span><span class="p">])</span>
+</pre></div>
+<p>output:</p>
+<pre><code>                      mean   std   min   max
+color  breed
+
+Black  Labrador Retriever    30.0  2.0  28.0  32.0
+       Poodle                20.0  2.0  18.0  22.0
+        Rottweiler            25.0  2.0  23.0  27.0
+        Shih Tzu              10.0  2.0   8.0  12.0
+        Yorkshire Terrier      5.0   NaN   NaN   NaN
+        Name: weight_kg, dtype: float64
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="3.-(Practice)">3. (Practice)<a class="anchor-link" href="#3.-(Practice)">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol>
+<li>What percent of sales occurred at each store type?</li>
+</ol>
+<p>While .groupby() is useful, you can calculate grouped summary statistics without it.</p>
+<p>Walmart distinguishes three types of stores: "supercenters," "discount stores," and "neighborhood markets," encoded in this dataset as type "A," "B," and "C." In this exercise, you'll calculate the total sales made at each store type, without using .groupby(). You can then use these numbers to see what proportion of Walmart's total sales were made at each type.</p>
+<p>sales is available and pandas is imported as pd.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Calc total weekly sales</span>
+<span class="n">sales_all</span> <span class="o">=</span> <span class="n">sales</span><span class="p">[</span><span class="s2">"weekly_sales"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="c1"># # Subset for type A stores, calc total weekly sales</span>
+<span class="n">sales_A</span> <span class="o">=</span> <span class="n">sales</span><span class="p">[</span><span class="n">sales</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"A"</span><span class="p">][</span><span class="s2">"weekly_sales"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">sales_A</span>
+
+<span class="c1"># # Subset for type B stores, calc total weekly sales</span>
+<span class="n">sales_B</span> <span class="o">=</span> <span class="n">sales</span><span class="p">[</span><span class="n">sales</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span><span class="o">==</span><span class="s1">'B'</span><span class="p">][</span><span class="s1">'weekly_sales'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">sales_B</span>
+
+<span class="c1"># # Subset for type C stores, calc total weekly sales</span>
+<span class="n">sales_C</span> <span class="o">=</span> <span class="n">sales</span><span class="p">[</span><span class="n">sales</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span><span class="o">==</span><span class="s1">'C'</span><span class="p">][</span><span class="s1">'weekly_sales'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># # Get proportion for each type</span>
+<span class="n">sales_propn_by_type</span> <span class="o">=</span> <span class="p">[</span><span class="n">sales_A</span><span class="p">,</span> <span class="n">sales_B</span><span class="p">,</span> <span class="n">sales_C</span><span class="p">]</span> <span class="o">/</span> <span class="n">sales_all</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales_propn_by_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>[0.9097747 0.0902253 0.       ]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="2">
+<li>Calculations with .groupby()</li>
+</ol>
+<p>The .groupby() method makes life much easier. In this exercise, you'll perform the same calculations as last time, except you'll use the .groupby() method. You'll also perform calculations on data grouped by two variables to see if sales differ by store type depending on if it's a holiday week or not.</p>
+<p>sales is available and pandas is loaded as pd.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Group by type; calc total weekly sales</span>
+<span class="n">sales_by_type</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"type"</span><span class="p">)[</span><span class="s2">"weekly_sales"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Get proportion for each type</span>
+<span class="n">sales_propn_by_type</span> <span class="o">=</span> <span class="n">sales_by_type</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sales_by_type</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales_propn_by_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>type
+A    0.909775
+B    0.090225
+Name: weekly_sales, dtype: float64
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Calculations with .groupby()
+The .groupby() method makes life much easier. In this exercise, you'll perform the same calculations as last time, except you'll use the .groupby() method. You'll also perform calculations on data grouped by two variables to see if sales differ by store type depending on if it's a holiday week or not.</p>
+<p>sales is available and pandas is loaded as pd.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># From previous step</span>
+<span class="n">sales_by_type</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"type"</span><span class="p">)[</span><span class="s2">"weekly_sales"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Group by type and is_holiday; calc total weekly sales</span>
+<span class="n">sales_by_type_is_holiday</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'type'</span><span class="p">,</span> <span class="s1">'is_holiday'</span><span class="p">])[</span><span class="s1">'weekly_sales'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales_by_type_is_holiday</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>type  is_holiday
+A     False         2.336927e+08
+      True          2.360181e+04
+B     False         2.317678e+07
+      True          1.621410e+03
+Name: weekly_sales, dtype: float64
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
