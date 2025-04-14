@@ -71,6 +71,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hasanshahriar32.github.io/ads/3.pandas_data_manipulation/notes/slice_&_index_df.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hasanshahriar32.github.io/ads/3.pandas_data_manipulation/notes/transforming_dataframe.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
