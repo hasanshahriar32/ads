@@ -8262,6 +8262,97 @@ Name: weekly_sales, dtype: float64
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Multiple grouped summaries
+Earlier in this chapter, you saw that the .agg() method is useful to compute multiple statistics on multiple variables. It also works with grouped data. NumPy, which is imported as np, has many different summary statistics functions, including: np.min, np.max, np.mean, and np.median.</p>
+<p>sales is available and pandas is imported as pd.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import numpy with the alias np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">sales</span>
+<span class="c1"># For each store type, aggregate weekly_sales: get min, max, mean, and median</span>
+<span class="n">sales_stats</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'type'</span><span class="p">)[</span><span class="s1">'weekly_sales'</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">])</span>
+
+<span class="c1"># Print sales_stats</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sales_stats</span><span class="p">)</span>
+
+<span class="c1"># # For each store type, aggregate unemployment and fuel_price_usd_per_l: get min, max, mean, and median</span>
+<span class="n">unemp_fuel_stats</span> <span class="o">=</span> <span class="n">sales</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'type'</span><span class="p">)[[</span><span class="s1">'unemployment'</span><span class="p">,</span><span class="s1">'fuel_price_usd_per_l'</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">])</span>
+
+<span class="c1"># # Print unemp_fuel_stats</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">unemp_fuel_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>         min        max          mean    median
+type                                           
+A    -1098.0  293966.05  23674.667242  11943.92
+B     -798.0  232558.51  25696.678370  13336.08
+     unemployment                         fuel_price_usd_per_l            \
+              min    max      mean median                  min       max   
+type                                                                       
+A           3.879  8.992  7.972611  8.067             0.664129  1.107410   
+B           7.170  9.765  9.279323  9.199             0.760023  1.107674   
+
+                          
+          mean    median  
+type                      
+A     0.744619  0.735455  
+B     0.805858  0.803348  
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>/tmp/ipykernel_2423/867137562.py:5: FutureWarning: The provided callable &lt;built-in function min&gt; is currently using SeriesGroupBy.min. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "min" instead.
+  sales_stats = sales.groupby('type')['weekly_sales'].agg([min, max, np.mean, np.median])
+/tmp/ipykernel_2423/867137562.py:5: FutureWarning: The provided callable &lt;built-in function max&gt; is currently using SeriesGroupBy.max. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "max" instead.
+  sales_stats = sales.groupby('type')['weekly_sales'].agg([min, max, np.mean, np.median])
+/tmp/ipykernel_2423/867137562.py:5: FutureWarning: The provided callable &lt;function mean at 0x7fe4ecf0d8b0&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  sales_stats = sales.groupby('type')['weekly_sales'].agg([min, max, np.mean, np.median])
+/tmp/ipykernel_2423/867137562.py:5: FutureWarning: The provided callable &lt;function median at 0x7fe4ec8ec9d0&gt; is currently using SeriesGroupBy.median. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "median" instead.
+  sales_stats = sales.groupby('type')['weekly_sales'].agg([min, max, np.mean, np.median])
+/tmp/ipykernel_2423/867137562.py:11: FutureWarning: The provided callable &lt;built-in function min&gt; is currently using SeriesGroupBy.min. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "min" instead.
+  unemp_fuel_stats = sales.groupby('type')[['unemployment','fuel_price_usd_per_l']].agg([min, max, np.mean, np.median])
+/tmp/ipykernel_2423/867137562.py:11: FutureWarning: The provided callable &lt;built-in function max&gt; is currently using SeriesGroupBy.max. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "max" instead.
+  unemp_fuel_stats = sales.groupby('type')[['unemployment','fuel_price_usd_per_l']].agg([min, max, np.mean, np.median])
+/tmp/ipykernel_2423/867137562.py:11: FutureWarning: The provided callable &lt;function mean at 0x7fe4ecf0d8b0&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  unemp_fuel_stats = sales.groupby('type')[['unemployment','fuel_price_usd_per_l']].agg([min, max, np.mean, np.median])
+/tmp/ipykernel_2423/867137562.py:11: FutureWarning: The provided callable &lt;function median at 0x7fe4ec8ec9d0&gt; is currently using SeriesGroupBy.median. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "median" instead.
+  unemp_fuel_stats = sales.groupby('type')[['unemployment','fuel_price_usd_per_l']].agg([min, max, np.mean, np.median])
+/tmp/ipykernel_2423/867137562.py:11: FutureWarning: The provided callable &lt;built-in function min&gt; is currently using SeriesGroupBy.min. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "min" instead.
+  unemp_fuel_stats = sales.groupby('type')[['unemployment','fuel_price_usd_per_l']].agg([min, max, np.mean, np.median])
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
